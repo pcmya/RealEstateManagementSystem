@@ -8,8 +8,18 @@ package MyLib;
  *
  * @author pcmya
  */
-public class Transaction {
+public abstract class Transaction {
+    private double payment;
+    private Client client;
+    private Property property;
 
+    public Transaction(Client client, Property property) {
+        this.client = client;
+        this.property = property;
+    }
+    
+    public abstract void computePayment();
+    public abstract void printReceipt();
     
     
 }
