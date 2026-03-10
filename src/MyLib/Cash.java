@@ -9,5 +9,15 @@ package MyLib;
  * @author pcmya
  */
 public class Cash {
+    public Cash (){
+        
+    }
     
+    public void computePayment(){
+        
+    }
+    
+    public void printReceipt(){
+        
+    }
 }

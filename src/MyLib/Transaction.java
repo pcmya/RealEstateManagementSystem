@@ -8,6 +8,10 @@ package MyLib;
  *
  * @author pcmya
  */
-public class Transaction {
+public abstract class Transaction {
+    private double payment;
     
+    public Transaction(){
+        
+    }
 }
