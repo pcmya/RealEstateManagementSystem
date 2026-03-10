@@ -8,16 +8,21 @@ package MyLib;
  *
  * @author pcmya
  */
-public class Cash {
-    public Cash (){
-        
+public class Cash extends Transaction {
+    
+    public Cash (String Client, String Property){
+        super (Client, Property);
     }
     
+    @Override
     public void computePayment(){
-        
+        double tcp; //totalcontractprice
+        double reservation = 15000.00;
+        this.payment = (tcp - reservation) / 24;
     }
     
+    @Override
     public void printReceipt(){
-        
+        System.out.println("");
     }
 }
