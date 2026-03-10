@@ -9,5 +9,18 @@ package MyLib;
  * @author pcmya
  */
 public class Property {
-    
+    private int blockLoc;
+    private int lotLoc;
+    private double price;
+    private double size;
+    private PropertyModel model;
+    private String status;
+
+    public Property(int blockLoc, int lotLoc, double price, double size, PropertyModel model) {
+        this.blockLoc = blockLoc;
+        this.lotLoc = lotLoc;
+        this.price = price;
+        this.size = size;
+        this.model = model;
+    }
 }
