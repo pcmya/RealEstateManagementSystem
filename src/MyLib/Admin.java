@@ -16,8 +16,16 @@ public class Admin extends SystemUser {
         this.adminID = adminID;
     }
     
-    @Override
-    public boolean login() {
-        return 101312 == adminID && "admin@312".equals(getPassword());
+    public boolean login(int adminID, String password) {
+        return this.adminID == adminID &&
+                this.getPassword().equals(password);
+    }
+    
+    public int getAdmin() {
+        return adminID;
+    }
+    
+    public void setAdminID(int adminID) {
+        this.adminID = adminID;
     }
 }
