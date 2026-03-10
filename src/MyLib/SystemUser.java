@@ -8,6 +8,18 @@ package MyLib;
  *
  * @author Christian Aranza
  */
-public class SystemUser {
+public abstract class SystemUser {
+    private String password;
+    
+    public SystemUser(String password) {
+        this.password = password;
+    }
+    
+    public abstract boolean login();
+
+    public String getPassword() {
+        return password;
+    }
     
 }
+
