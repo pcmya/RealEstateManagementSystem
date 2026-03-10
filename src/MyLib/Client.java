@@ -9,15 +9,38 @@ package MyLib;
  * @author Christian Aranza
  */
 public class Client extends SystemUser {
+    private String name;
     private String email;
+    private String username;
+    private int celNum;
 
-    public Client(String email, String password) {
+    public Client(String name, String email, String username, String password, int celNum) {
         super(password);
+        this.name = name;
         this.email = email;
+        this.username = username;
+        this.celNum = celNum;
     }
-
-    @Override
-    public boolean login() {
-        return "client@gmail.com".equals(email) && "client123#".equals(getPassword());
+    
+    public boolean login(String username, String password) {
+        return this.username.equals(username) &&
+                this.getPassword().equals(password);
     }
+    
+    public String getname() {
+        return name;
+    }
+    
+    public String getEmail() {
+        return email;
+    }
+    
+    public String username() {
+        return username;
+    }
+    
+    public int getCelNum() {
+        return celNum;
+    }
+    
 }
