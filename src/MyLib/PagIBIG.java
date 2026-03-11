@@ -16,7 +16,7 @@ public class PagIBIG extends Transaction {
     private double loanAmount;
     private int monthly;
     
-    public PagIBIG (String Client, String Property, String pbName, int pbID){
+    public PagIBIG (Client Client, Property Property, String pbName, int pbID){
         super (Client, Property);
         this.pbName = pbName;
         this.pbID = pbID;
@@ -24,9 +24,7 @@ public class PagIBIG extends Transaction {
     
     @Override
     public void computePayment(){
-        this.monthly = 360;
-        double r = interest / 12;
-        this.payment = (loanAmount * r * Math.pow(1 + r, monthly)) / (Math.pow(1 + r, monthly) - 1);
+
     }
     
     @Override

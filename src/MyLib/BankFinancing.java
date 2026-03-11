@@ -16,7 +16,7 @@ public class BankFinancing extends Transaction {
     private double loanAmount;
     private int monthly;
     
-    public BankFinancing (String Client, String Property, String bankName, int bankNum){
+    public BankFinancing (Client Client, Property Property, String bankName, int bankNum){
         super (Client, Property);
         this.bankName = bankName;
         this.bankNum = bankNum;
@@ -24,9 +24,7 @@ public class BankFinancing extends Transaction {
     
     @Override
     public void computePayment(){
-        this.monthly = 360;
-        double r = interest / 12;
-        this.payment = (loanAmount * r * Math.pow(1 + r, monthly)) / (Math.pow(1 + r, monthly) - 1);
+
     }
     
     @Override
