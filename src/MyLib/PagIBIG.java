@@ -9,64 +9,74 @@ package MyLib;
  * @author pcmya
  */
 public class PagIBIG extends Transaction {
+
+    private double tcp = 0.00;
+    private double requiredDP = 0.0;
+    private double reservationFee = 15000.00;
+    private int dpTerm = 24;
+    private double netDP;
+    private double monthlyEquity;
+    private double loanableAmount;
     
-    private String pbName;
-    private int pbID;
-    private double interest = 0.075;
-    private double loanAmount;
-    private int monthly;
-    
-    public PagIBIG (Client Client, Property Property, String pbName, int pbID){
-        super (Client, Property);
-        this.pbName = pbName;
-        this.pbID = pbID;
+    public PagIBIG (Client client, Property property){
+        super (client, property);
     }
     
-    @Override
-    public void computePayment(){
-
-        String modelName;
-        String[] arr = {"Anica", "Alice", "Thea", "Adelle"};
-        modelName = arr[select];
-
-        double tcp = 0.00;
-        double requiredDP = 0.0;
-        double reservationFee = 15000.00;
-        int dpTerm = 24;
-
+    public void computePayment(String modelName){
         if (modelName.equals("Adelle")) {
-            tcp = 4040600.00;        // Example price for Adelle
-            requiredDP = 950000.00;  // Example DP
-
-        } else if (modelName.equals("Alice")) {
-            // Exact values from your last attachment
+            tcp = 4040600.00;        
+            requiredDP = 950000.00; 
+        }
+        if (modelName.equals("Alice")) {
             tcp = 2833600.00;
             requiredDP = 822070.00;
-
-        } else if (modelName.equals("Thea")) {
-            tcp = 3905500.00;        // Example price for Thea
-            requiredDP = 600000.00;  // Example DP
+        }
+        if (modelName.equals("Thea")) {
+            tcp = 3905500.00;        
+            requiredDP = 600000.00;  
 
         } else if (modelName.equals("Anica")) {
-            tcp = 3153400.00;        // Example price for Anica
-            requiredDP = 450000.00;  // Example DP
+            tcp = 3153400.00;       
+            requiredDP = 450000.00;
         }
+        
+        netDP = requiredDP - reservationFee;
+        monthlyEquity = netDP / dpTerm;
+        loanableAmount = tcp - requiredDP;
+    }
 
-        //Shared Computation
-        double netDP = requiredDP - reservationFee;
-        double monthlyEquity = netDP / dpTerm;
-        double loanableAmount = tcp - requiredDP;
+    public double getTcp() {
+        return tcp;
+    }
 
-        //Update the GUI Labels
-        lblTotalAmount.setText(String.format("%.2f php", tcp));
-        lblReservationFee.setText(String.format("%.2f php", reservationFee));
-        lblMonthlyEquity.setText(String.format("%.2f php", monthlyEquity));
+    public double getRequiredDP() {
+        return requiredDP;
+    }
 
+    public double getReservationFee() {
+        return reservationFee;
+    }
+
+    public int getDpTerm() {
+        return dpTerm;
+    }
+
+    public double getNetDP() {
+        return netDP;
+    }
+
+    public double getMonthlyEquity() {
+        return monthlyEquity;
+    }
+
+    public double getLoanableAmount() {
+        return loanableAmount;
+    }
+
+    @Override
+    public void computePayment() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    @Override
-    public void printReceipt(){
-        System.out.println("");
-    }
     
 }

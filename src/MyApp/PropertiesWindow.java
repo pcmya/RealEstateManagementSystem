@@ -87,6 +87,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
         inputBlock.addActionListener(this::inputBlockActionPerformed);
 
         cmbModel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Anica", "Alice", "Thea", "Adelle" }));
+        cmbModel.addActionListener(this::cmbModelActionPerformed);
 
         jLabel1.setText("Enter Size:");
 
@@ -375,9 +376,15 @@ public class PropertiesWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_inputSizeActionPerformed
 
+
+    private void cmbModelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cmbModelActionPerformed
+
     private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
         new SiteMap(loggedIn, ep).setVisible(true);
     }//GEN-LAST:event_sitemapButtonActionPerformed
+
 
     private void loadProperties() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();

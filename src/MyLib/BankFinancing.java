@@ -10,81 +10,90 @@ package MyLib;
  */
 public class BankFinancing extends Transaction {
     
-    private String bankName;
-    private int bankNum;
-    private double interest = 0.0775;
-    private double loanAmount;
-    private int monthly;
+    private double totalContractPrice = 0.0;
+    private double reservationFee = 0.0;
+    private double dpPercent = 0.0;
+    private double requiredDP = 0.0;
+    private double netDP = 0.0;
+    private double dPTerm = 0.0;
+    private double loanableAmount = 0.0;
     
-    public BankFinancing (Client Client, Property Property, String bankName, int bankNum){
-        super (Client, Property);
-        this.bankName = bankName;
-        this.bankNum = bankNum;
+    public BankFinancing (Client client, Property property){
+        super(client, property);
     }
     
-    @Override
-    public void computePayment(){
-        String modelName;
-
-        double totalContractPrice = 0.0;
-        double reservationFee = 0.0;
-        double dpPercent = 0.0;
-        double requiredDP = 0.0;
-        double netDP = 0.0;
-        double dPTerm = 0.0;
-        double loanableAmount = 0.0;
-        
-        String[] arr = {"Anica", "Alice", "Thea", "Adelle"};
-        modelName = arr[select];
-
+    public void computePayment(String modelName){
         if (modelName.equals("Adelle")) {
-
             totalContractPrice = 4040600.00;
             reservationFee = 20000.00;
             dpPercent = 0.15; // 15%
 
             netDP = requiredDP - reservationFee;
-            dPTerm = netDP / 18; // 18 months DP
-            
-        } else if (modelName.equals("Alice")) {
-            
+            dPTerm = netDP / 18; // 18 months DP  
+        }
+        
+        if (modelName.equals("Alice")) {
             totalContractPrice = 2783000.00;
             reservationFee = 15000.00;
             dpPercent = 0.10; // 10%
 
             netDP = requiredDP - reservationFee;
             dPTerm = netDP / 12;
-
-        } else if (modelName.equals("Thea")) {
-
+        }
+        if (modelName.equals("Thea")) {
             totalContractPrice = 3905500.00;
             reservationFee = 15000.00;
             dpPercent = 0.125; // 12.5%
 
             netDP = requiredDP - reservationFee;
-            dPTerm = netDP / 21; //21 months
-            
-        } else if (modelName.equals("Anica")) {
-
+            dPTerm = netDP / 21; //21 months 
+        }
+        if (modelName.equals("Anica")) {
             totalContractPrice = 3153400.00;
             reservationFee = 10000.00;
             dpPercent = 0.15; // 15%
 
             netDP = requiredDP - reservationFee;
             dPTerm = netDP / 18; // months
-            
-            
         }
-        
-            //Shared Computation
-            requiredDP = totalContractPrice * dpPercent;
-            loanableAmount = totalContractPrice - requiredDP;
+        requiredDP = totalContractPrice * dpPercent;
+        loanableAmount = totalContractPrice - requiredDP;
             
+    }
+
+    public double getTotalContractPrice() {
+        return totalContractPrice;
+    }
+
+    public double getReservationFee() {
+        return reservationFee;
+    }
+
+    public double getDpPercent() {
+        return dpPercent;
+    }
+
+    public double getRequiredDP() {
+        return requiredDP;
+    }
+
+    public double getNetDP() {
+        return netDP;
+    }
+
+    public double getdPTerm() {
+        return dPTerm;
+    }
+
+    public double getLoanableAmount() {
+        return loanableAmount;
+    }
+
+    @Override
+    public void computePayment() {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
     
-    @Override
-    public void printReceipt(){
-        System.out.println("");
-    }
+    
     
 }
