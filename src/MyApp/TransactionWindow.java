@@ -368,7 +368,8 @@ public class TransactionWindow extends javax.swing.JFrame {
     private void confirmTransactBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmTransactBtnActionPerformed
         // TODO add your handling code here:
         String buyReserveSelect = comboBuyReserve.getSelectedItem().toString();
-        
+        //String payMethodSelect = comboPayMethod.getSelectedItem().toString();
+        //to be continued
         if (buyReserveSelect.equals("Reserve Lot")) {
             chosenBlkLot.setStatus("Reserved");
         }
