@@ -29,13 +29,17 @@ public class TransactionWindow extends javax.swing.JFrame {
     
     EstateProperties ep; 
     
+    Reserve reserve;
+    Cash cash;
+
     public TransactionWindow(Property chosenBlkLot, Client loggedIn) {
         initComponents();
         this.chosenBlkLot = chosenBlkLot;
         this.loggedIn = loggedIn;
         ep = new EstateProperties();
         displayChosenProperty();
-        
+        reserve = new Reserve(loggedIn, chosenBlkLot);
+        cash = new Cash(loggedIn, chosenBlkLot);
     }
 
     /**
@@ -49,16 +53,16 @@ public class TransactionWindow extends javax.swing.JFrame {
 
         jLabel4 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
-        jComboBox2 = new javax.swing.JComboBox<>();
-        jPanel2 = new javax.swing.JPanel();
+        comboPayMethod = new javax.swing.JComboBox<>();
+        comboBuyReserve = new javax.swing.JComboBox<>();
+        receiptPanel = new javax.swing.JPanel();
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
+        reservFeeInfo = new javax.swing.JLabel();
+        tcpInfo = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -83,16 +87,17 @@ public class TransactionWindow extends javax.swing.JFrame {
         setPreferredSize(new java.awt.Dimension(1083, 759));
         setResizable(false);
 
-        jComboBox1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Payment Method", "Cash", "Bank Financing", "Pag-IBIG" }));
-        jComboBox1.addPropertyChangeListener(this::jComboBox1PropertyChange);
+        comboPayMethod.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboPayMethod.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Payment Method", "Cash", "Bank Financing", "Pag-IBIG" }));
+        comboPayMethod.addItemListener(this::comboPayMethodItemStateChanged);
+        comboPayMethod.addPropertyChangeListener(this::comboPayMethodPropertyChange);
 
-        jComboBox2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Action", "Buy Lot", "Reserve Lot" }));
-        jComboBox2.addActionListener(this::jComboBox2ActionPerformed);
+        comboBuyReserve.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        comboBuyReserve.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Select Action", "Buy Lot", "Reserve Lot" }));
+        comboBuyReserve.addActionListener(this::comboBuyReserveActionPerformed);
 
-        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
+        receiptPanel.setBackground(new java.awt.Color(255, 255, 255));
+        receiptPanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(204, 204, 204)));
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel19.setText("Total Contract Price:");
@@ -109,11 +114,11 @@ public class TransactionWindow extends javax.swing.JFrame {
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel23.setText("PagIBIG ID:");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel24.setText("15,000.00php");
+        reservFeeInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        reservFeeInfo.setText("15,000.00php");
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel25.setText("0.00php");
+        tcpInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tcpInfo.setText("0.00php");
 
         jLabel26.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel26.setText("0.00php");
@@ -138,68 +143,68 @@ public class TransactionWindow extends javax.swing.JFrame {
         jLabel33.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel33.setText("jLabel33");
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout receiptPanelLayout = new javax.swing.GroupLayout(receiptPanel);
+        receiptPanel.setLayout(receiptPanelLayout);
+        receiptPanelLayout.setHorizontalGroup(
+            receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(receiptPanelLayout.createSequentialGroup()
+                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(receiptPanelLayout.createSequentialGroup()
+                        .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(receiptPanelLayout.createSequentialGroup()
                                 .addGap(75, 75, 75)
                                 .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(receiptPanelLayout.createSequentialGroup()
                                 .addGap(74, 74, 74)
                                 .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 131, Short.MAX_VALUE))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addGroup(receiptPanelLayout.createSequentialGroup()
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(receiptPanelLayout.createSequentialGroup()
                                 .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(receiptPanelLayout.createSequentialGroup()
+                                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel20)
                                     .addComponent(jLabel19))
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(receiptPanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(tcpInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(0, 0, Short.MAX_VALUE))
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                    .addGroup(receiptPanelLayout.createSequentialGroup()
                                         .addGap(18, 18, 18)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(reservFeeInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                            .addGroup(receiptPanelLayout.createSequentialGroup()
+                                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(receiptPanelLayout.createSequentialGroup()
                                         .addComponent(jLabel22)
                                         .addGap(29, 29, 29)
                                         .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jLabel32, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel33, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addComponent(jLabel21, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 102, Short.MAX_VALUE)))
                                 .addGap(0, 0, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        receiptPanelLayout.setVerticalGroup(
+            receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(receiptPanelLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel25))
+                    .addComponent(tcpInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel24))
+                    .addComponent(reservFeeInfo))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
                     .addComponent(jLabel26))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -207,13 +212,13 @@ public class TransactionWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel33)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 55, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel22))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel29)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -222,7 +227,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel1.setText("Action");
+        jLabel1.setText("Buy or Reserve?");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Payment Method");
@@ -274,17 +279,17 @@ public class TransactionWindow extends javax.swing.JFrame {
                         .addContainerGap(33, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(comboBuyReserve, 0, 264, Short.MAX_VALUE)
+                                    .addComponent(comboPayMethod, 0, 264, Short.MAX_VALUE)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(receiptPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -307,18 +312,19 @@ public class TransactionWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(receiptPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(comboBuyReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(comboPayMethod, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(71, 71, 71)
                         .addComponent(jLabel31)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(89, Short.MAX_VALUE))
         );
 
@@ -362,13 +368,67 @@ public class TransactionWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+    private void comboBuyReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBuyReserveActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox2ActionPerformed
+        String buyReserveSelect = comboBuyReserve.getSelectedItem().toString();
+        
+        if (buyReserveSelect.equals("Buy Lot")) {
+            // Update Total Contract Price
+            tcpInfo.setText(String.format("₱ %.2f", chosenBlkLot.getPrice()));
+            
+            // Update Reservation Fee
+            reservFeeInfo.setText("₱ 15,000.00");
+            
+            // Update Monthly Equity
+            jLabel26.setText("₱ 0.00");
+        } else if (buyReserveSelect.equals("Reserve Lot")) {
+            reserve.computePayment(chosenBlkLot.getModel().getModelName());
+            // Update Total Contract Price
+            tcpInfo.setText("₱ 15,000.00");
+            
+            // Update Reservation Fee
+            reservFeeInfo.setText("₱ 15,000.00");
+            
+            // Update Monthly Equity
+            jLabel26.setText("₱ 0.00");
+        }
+    }//GEN-LAST:event_comboBuyReserveActionPerformed
 
-    private void jComboBox1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jComboBox1PropertyChange
+    private void comboPayMethodPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_comboPayMethodPropertyChange
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1PropertyChange
+    }//GEN-LAST:event_comboPayMethodPropertyChange
+
+    private void comboPayMethodItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboPayMethodItemStateChanged
+        // TODO add your handling code here:
+        String payMethodSelect = comboPayMethod.getSelectedItem().toString();
+        
+        if (payMethodSelect.equals("Cash")) {
+            cash.computePayment(chosenBlkLot.getModel().getModelName());
+            
+            tcpInfo.setText(String.format("₱ %.2f", cash.getTotalContractPrice()));
+            reservFeeInfo.setText(String.format("₱ %.2f", cash.getReservationFee()));
+            jLabel26.setText(String.format("₱ %.2f", cash.getNetTotalContractPrice()));
+            
+            jTextField1.setVisible(false);
+            jLabel31.setVisible(false);
+        }
+        else if (payMethodSelect.equals("Bank Financing")) {
+            
+        }
+        else if (payMethodSelect.equals("Pag-IBIG")) { 
+            
+        }
+        else {
+            // Reset all labels
+            tcpInfo.setText("₱ 0.00");
+            reservFeeInfo.setText("₱ 15,000.00");
+            jLabel26.setText("₱ 0.00");
+            
+            // Hide additional fields
+            jTextField1.setVisible(false);
+            jLabel31.setVisible(false);
+        }
+    }//GEN-LAST:event_comboPayMethodItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -396,9 +456,9 @@ public class TransactionWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> comboBuyReserve;
+    private javax.swing.JComboBox<String> comboPayMethod;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
@@ -408,8 +468,6 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
@@ -421,9 +479,11 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JPanel receiptPanel;
+    private javax.swing.JLabel reservFeeInfo;
+    private javax.swing.JLabel tcpInfo;
     // End of variables declaration//GEN-END:variables
 }
