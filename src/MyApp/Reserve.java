@@ -49,7 +49,6 @@ public class Reserve extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(153, 153, 153));
         jPanel1.setRequestFocusEnabled(false);
-        jPanel1.setSize(new java.awt.Dimension(1025, 787));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
