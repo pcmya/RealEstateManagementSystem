@@ -65,7 +65,9 @@ public class PropertiesWindow extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         greetingLabel = new javax.swing.JLabel();
         navbar = new javax.swing.JPanel();
+        dashboardButton = new javax.swing.JButton();
         sitemapButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -117,14 +119,28 @@ public class PropertiesWindow extends javax.swing.JFrame {
         greetingLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         greetingLabel.setText("Welcome, ");
 
-        navbar.setBackground(new java.awt.Color(102, 102, 102));
+        navbar.setBackground(new java.awt.Color(153, 153, 153));
 
-        sitemapButton.setBackground(new java.awt.Color(102, 102, 102));
-        sitemapButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
+        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
+        dashboardButton.setText("Dashboard");
+        dashboardButton.setBorder(null);
+        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
+
+        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
+        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
         sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
         sitemapButton.setText("Site map");
         sitemapButton.setBorder(null);
         sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
+
+        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
+        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(0, 0, 0));
+        logoutButton.setText("Log out");
+        logoutButton.setBorder(null);
+        logoutButton.addActionListener(this::logoutButtonActionPerformed);
 
         javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
         navbar.setLayout(navbarLayout);
@@ -132,15 +148,22 @@ public class PropertiesWindow extends javax.swing.JFrame {
             navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navbarLayout.createSequentialGroup()
                 .addGap(26, 26, 26)
-                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(26, Short.MAX_VALUE))
         );
         navbarLayout.setVerticalGroup(
             navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navbarLayout.createSequentialGroup()
-                .addGap(206, 206, 206)
+                .addGap(287, 287, 287)
+                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -178,7 +201,6 @@ public class PropertiesWindow extends javax.swing.JFrame {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)))
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(greetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -191,7 +213,8 @@ public class PropertiesWindow extends javax.swing.JFrame {
                                             .addComponent(jLabel7)
                                             .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                     .addComponent(btnProceedTransact, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(390, 390, 390)))
+                                .addGap(390, 390, 390))
+                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43))))
         );
         layout.setVerticalGroup(
@@ -381,9 +404,17 @@ public class PropertiesWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_cmbModelActionPerformed
 
-    private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
+    private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
         new SiteMap(loggedIn, ep).setVisible(true);
+    }//GEN-LAST:event_dashboardButtonActionPerformed
+
+    private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
+        // TODO add your handling code here:
     }//GEN-LAST:event_sitemapButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
 
     private void loadProperties() {
@@ -455,6 +486,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
     private javax.swing.JTextField chosenBlockInput;
     private javax.swing.JTextField chosenLotInput;
     private javax.swing.JComboBox<String> cmbModel;
+    private javax.swing.JButton dashboardButton;
     private javax.swing.JLabel greetingLabel;
     private javax.swing.JTextField inputBlock;
     private javax.swing.JTextField inputPrice;
@@ -468,6 +500,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JButton logoutButton;
     private javax.swing.JPanel navbar;
     private javax.swing.JButton sitemapButton;
     // End of variables declaration//GEN-END:variables
