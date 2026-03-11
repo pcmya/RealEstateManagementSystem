@@ -10,6 +10,7 @@ import MyLib.BankFinancing;
 import MyLib.Client;
 import MyLib.EstateProperties;
 import MyLib.Property;
+import MyLib.Reserve;
 import MyLib.Transaction;
 import javax.swing.table.DefaultTableModel;
 
@@ -29,16 +30,16 @@ public class TransactionWindow extends javax.swing.JFrame {
     
     EstateProperties ep; 
     
-    ReserveView reserve;
+    Reserve reserve;
     Cash cash;
 
-    public TransactionWindow(Property chosenBlkLot, Client loggedIn) {
+    public TransactionWindow(Property chosenBlkLot, Client client) {
         initComponents();
         this.chosenBlkLot = chosenBlkLot;
-        this.loggedIn = loggedIn;
+        this.loggedIn = client;
         ep = new EstateProperties();
         displayChosenProperty();
-        reserve = new ReserveView(loggedIn, chosenBlkLot);
+        reserve = new Reserve(loggedIn, chosenBlkLot);
         cash = new Cash(loggedIn, chosenBlkLot);
     }
 
@@ -379,16 +380,12 @@ public class TransactionWindow extends javax.swing.JFrame {
             
             // Update Monthly Equity
             jLabel26.setText("₱ 0.00");
-        } else if (buyReserveSelect.equals("Reserve Lot")) {
+        }
+        if (buyReserveSelect.equals("Reserve Lot")) {
             reserve.computePayment(chosenBlkLot.getModel().getModelName());
-            // Update Total Contract Price
-            tcpInfo.setText("₱ 15,000.00");
             
-            // Update Reservation Fee
-            reservFeeInfo.setText("₱ 15,000.00");
-            
-            // Update Monthly Equity
-            jLabel26.setText("₱ 0.00");
+            tcpInfo.setText(String.format("₱ %.2f", reserve.getTotalContractPrice()));
+            reservFeeInfo.setText(String.format("₱ %.2f", reserve.getReservationFee()));
         }
     }//GEN-LAST:event_comboBuyReserveActionPerformed
 
