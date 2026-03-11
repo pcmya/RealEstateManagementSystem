@@ -262,19 +262,19 @@ public class PropertiesWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
-        // TODO add your handling code here:
-        Transaction transactWindow = new Transaction();
-        transactWindow.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnReserveActionPerformed
-
     private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
         // TODO add your handling code here:
         Transaction transactWindow = new Transaction();
         transactWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnBuyActionPerformed
+
+    private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
+        // TODO add your handling code here:
+        Transaction transactWindow = new Transaction();
+        transactWindow.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_btnReserveActionPerformed
 
     private void loadProperties() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
