@@ -26,6 +26,14 @@ public class BankFinancing extends Transaction {
     public void computePayment(){
         String modelName;
 
+        double totalContractPrice;
+        double reservationFee;
+        double dpPercent;
+        double requiredDP;
+        double netDP;
+        double monthlyEquity;
+        double loanableAmount;
+        
         String[] arr = {"Anica", "Alice", "Thea", "Adelle"};
         int select = nextInt(arr.length);
         modelName = arr[select];
@@ -33,26 +41,25 @@ public class BankFinancing extends Transaction {
         if (modelName.equals("Adelle")) {
 
         } else if (modelName.equals("Alice")) {
+            
             // 1. Base Values
-            double totalContractPrice = 2783000.00; // From your JFrame
-            double reservationFee = 15000.00;
+            totalContractPrice = 2783000.00;
+            reservationFee = 15000.00;
 
             // 2. Downpayment Calculations (10% DP for 12 months)
-            double dpPercent = 0.10;
-            double requiredDP = totalContractPrice * dpPercent;
-            double netDP = requiredDP - reservationFee;
-            double monthlyEquity = netDP / 12; // Monthly payment for 12 months
+            dpPercent = 0.10;
+            requiredDP = totalContractPrice * dpPercent;
+            netDP = requiredDP - reservationFee;
+            monthlyEquity = netDP / 12; // Monthly payment for 12 months
 
-            // 3. Loanable Amount (The 90% remaining)
-            double loanableAmount = totalContractPrice - requiredDP;
+            // 3. Loanable Amount (90% remaining)
+            loanableAmount = totalContractPrice - requiredDP;
 
-            // Update your JFrame Labels (Check your actual variable names)
+            // Update your JFrame Labels
             lblTotalAmount.setText(String.format("%.2f php", totalContractPrice));
             lblReservationFee.setText(String.format("%.2f php", reservationFee));
             lblMonthlyEquity.setText(String.format("%.2f php", monthlyEquity));
 
-            // Note: You can also display the Loanable Amount in a label if you have one
-            System.out.println("Loanable Amount: " + loanableAmount);
         } else if (modelName.equals("Thea")) {
 
         } else if (modelName.equals("Anica")) {
