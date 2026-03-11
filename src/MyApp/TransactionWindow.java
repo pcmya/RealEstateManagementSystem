@@ -427,10 +427,21 @@ public class TransactionWindow extends javax.swing.JFrame {
             jLabel31.setVisible(false);
         }
         else if (payMethodSelect.equals("Bank Financing")) {
+            jLabel31.setVisible(true);
+            jTextField1.setVisible(true);
             
+            tcpInfo.setText(String.format("₱ %.2f", chosenBlkLot.getPrice()));
+            reservFeeInfo.setText("₱ 15,000.00");
+            jLabel26.setText("₱ 0.00");
         }
         else if (payMethodSelect.equals("Pag-IBIG")) { 
+            jLabel31.setText("Pag-IBIG ID:");
+            jLabel31.setVisible(true);
+            jTextField1.setVisible(true);
             
+            tcpInfo.setText(String.format("₱ %.2f", chosenBlkLot.getPrice()));
+            reservFeeInfo.setText("₱ 15,000.00");
+            jLabel26.setText("₱ 0.00");
         }
         else {
             // Reset all labels
