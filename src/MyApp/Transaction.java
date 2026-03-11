@@ -15,7 +15,7 @@ public class Transaction extends javax.swing.JFrame {
     /**
      * Creates new form Transaction
      */
-    public Transaction() {
+    public Transaction(Integer blockNum, Integer lotNum) {
         initComponents();
     }
 
@@ -428,7 +428,7 @@ public class Transaction extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Transaction().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new Transaction(blockNum, lotNum).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

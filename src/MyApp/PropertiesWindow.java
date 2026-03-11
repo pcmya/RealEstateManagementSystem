@@ -266,11 +266,39 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
     private void btnProceedTransactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedTransactActionPerformed
         // TODO add your handling code here:
+        Integer blockNum = null;
+        Integer lotNum = null;
         
         String chosenBlockText = chosenBlockInput.getText().trim();
         String chosenLotText = chosenLotInput.getText().trim();
         
-        Transaction transactWindow = new Transaction();
+        if (!chosenBlockText.isEmpty()) {
+            try {
+                blockNum = Integer.parseInt(chosenBlockText);
+            } catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Block Number", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Enter a Block Number", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        if (!chosenLotText.isEmpty()) {
+            try {
+                lotNum = Integer.parseInt(chosenLotText);
+            } catch(NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Lot Number", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Enter a Lot Number", "Error", JOptionPane.ERROR_MESSAGE);
+            return; 
+        }
+        
+        Transaction transactWindow = new Transaction(blockNum, lotNum);
         transactWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnProceedTransactActionPerformed
