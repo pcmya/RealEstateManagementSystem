@@ -12,9 +12,9 @@ public class Client extends SystemUser {
     private String name;
     private String email;
     private String username;
-    private int celNum;
+    private String celNum;
 
-    public Client(String name, String email, String username, String password, int celNum) {
+    public Client(String name, String email, String username, String password, String celNum) {
         super(password);
         this.name = name;
         this.email = email;
@@ -27,7 +27,7 @@ public class Client extends SystemUser {
                 this.getPassword().equals(password);
     }
     
-    public String getname() {
+    public String getName() {
         return name;
     }
     
@@ -39,7 +39,7 @@ public class Client extends SystemUser {
         return username;
     }
     
-    public int getCelNum() {
+    public String getCelNum() {
         return celNum;
     }
     
