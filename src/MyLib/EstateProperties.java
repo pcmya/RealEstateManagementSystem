@@ -21,7 +21,7 @@ public class EstateProperties {
     private void addProperty() {
         Random r = new Random();
         for(int blockLoc = 1; blockLoc <= 5; blockLoc++) {
-            for(int lotLoc = 1; lotLoc <= 10; lotLoc++) {
+            for(int lotLoc = 1; lotLoc <= 20; lotLoc++) {
                 double size;
                 double price;
                 String modelName;
@@ -36,10 +36,10 @@ public class EstateProperties {
                 }
                 else {
                     size = 50;
-                    price = 2320910 + r.nextDouble(15944490);
+                    price = 2320910 + r.nextDouble(1594440);
                 }
                 
-                properties.add(new Property(blockLoc, lotLoc, price, size, new PropertyModel(modelName)));
+                properties.add(new Property(blockLoc, lotLoc, Math.round(price), size, new PropertyModel(modelName)));
             }
         }
     }
