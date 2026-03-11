@@ -8,15 +8,16 @@ package MyApp;
  *
  * @author Fidel
  */
-public class Transaction extends javax.swing.JFrame {
+public class TransactionWindow extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Transaction.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(TransactionWindow.class.getName());
 
     /**
      * Creates new form Transaction
      */
-    public Transaction(Integer blockNum, Integer lotNum) {
+    public TransactionWindow(Integer blockNum, Integer lotNum) {
         initComponents();
+        
     }
 
     /**
@@ -428,7 +429,7 @@ public class Transaction extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new Transaction(blockNum, lotNum).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TransactionWindow(blockNum, lotNum).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
