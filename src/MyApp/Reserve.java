@@ -12,7 +12,7 @@ import java.util.ArrayList;
 public class Reserve extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Reserve.class.getName());
-
+    
     /**
      * Creates new form Reserve
      */
@@ -62,13 +62,13 @@ public class Reserve extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        jLabel1.setFont(new java.awt.Font("Helvetica Neue", 0, 36)); // NOI18N
+        jLabel1.setFont(new java.awt.Font("Apple SD Gothic Neo", 0, 36)); // NOI18N
         jLabel1.setText("Reservations");
 
-        jLabel2.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel2.setFont(new java.awt.Font("Apple SD Gothic Neo", 0, 14)); // NOI18N
         jLabel2.setText("View lots you've reserved here");
 
-        jLabel3.setFont(new java.awt.Font("Helvetica Neue", 0, 14)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Apple SD Gothic Neo", 0, 14)); // NOI18N
         jLabel3.setText("Lots:");
 
         jScrollPane1.setViewportView(reservePanel);
@@ -78,7 +78,7 @@ public class Reserve extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
@@ -89,7 +89,7 @@ public class Reserve extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGap(26, 26, 26)
                 .addComponent(jLabel1)
@@ -119,16 +119,29 @@ public class Reserve extends javax.swing.JFrame {
            // card.setBackground(java.awt.Color.WHITE);
             card.setPreferredSize(new java.awt.Dimension(200, 120));
             //card.setBorder(javax.swing.BorderFactory.createLineBorder(java.awt.Color.GRAY));
+            //String location = res.getProperty().getBlockLoc();
             javax.swing.JLabel info = new javax.swing.JLabel("Lot:");
+            
+            
             card.add(info);
             reservePanel.add(card);
         }
         
         reservePanel.revalidate();
         reservePanel.repaint();
+        }     
     }
-         
-       
+    
+    private java.util.ArrayList<MyLib.Reserve> currentReservations = new java.util.ArrayList();
+    
+    public void addNewReservation(MyLib.Reserve newRes) {
+        if (this.currentReservations == null) {
+            this.currentReservations = new java.util.ArrayList<>();
+        }
+        
+        this.currentReservations.add(newRes);
+        
+        reservationDisplay(this.currentReservations);
     }
     /**
      * @param args the command line arguments
@@ -154,6 +167,9 @@ public class Reserve extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
             ArrayList<MyLib.Reserve> testList = new ArrayList<>();
+            
+          //  MyLib.Property p = new MyLib.Property("Block 1", "Lot 5");
+            //MyLib.Reserve r = new MyLib.Reserve(null, p);
             new Reserve(testList).setVisible(true);
         });
            
