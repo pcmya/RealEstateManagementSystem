@@ -36,6 +36,71 @@ public class SiteMap extends javax.swing.JFrame {
         
         getContentPane().setLayout(new java.awt.BorderLayout(10, 10));
         
+        
+                //copied from gui ng dashboard
+        navbar = new javax.swing.JPanel();
+        dashboardButton = new javax.swing.JButton();
+        sitemapButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        logoimage = new javax.swing.JLabel();
+        navbar.setBackground(new java.awt.Color(153, 153, 153));
+
+        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
+        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
+        dashboardButton.setText("Dashboard");
+        dashboardButton.setBorder(null);
+        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
+
+        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
+        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
+        sitemapButton.setText("Site map");
+        sitemapButton.setBorder(null);
+        sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
+
+        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
+        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(0, 0, 0));
+        logoutButton.setText("Log out");
+        logoutButton.setBorder(null);
+        logoutButton.addActionListener(this::logoutButtonActionPerformed);
+
+        logoimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyApp/images/logoimgsmall.png"))); // NOI18N
+        logoimage.setText("jLabel2");
+
+        javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
+        navbar.setLayout(navbarLayout);
+        navbarLayout.setHorizontalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        navbarLayout.setVerticalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
+        );
+        //end of nav
+        
+        
         javax.swing.JPanel sideBar = new javax.swing.JPanel();
         sideBar.setPreferredSize(new java.awt.Dimension(180, 787));
         
@@ -133,6 +198,11 @@ public class SiteMap extends javax.swing.JFrame {
         legend = new javax.swing.JLabel();
         gridPanel = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
+        navbar = new javax.swing.JPanel();
+        dashboardButton = new javax.swing.JButton();
+        sitemapButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        logoimage = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1025, 787));
@@ -149,18 +219,76 @@ public class SiteMap extends javax.swing.JFrame {
         jButton1.setText("<- Return to dashboard");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
+        navbar.setBackground(new java.awt.Color(153, 153, 153));
+
+        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
+        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
+        dashboardButton.setText("Dashboard");
+        dashboardButton.setBorder(null);
+        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
+
+        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
+        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
+        sitemapButton.setText("Site map");
+        sitemapButton.setBorder(null);
+        sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
+
+        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
+        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(0, 0, 0));
+        logoutButton.setText("Log out");
+        logoutButton.setBorder(null);
+        logoutButton.addActionListener(this::logoutButtonActionPerformed);
+
+        logoimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyApp/images/logoimgsmall.png"))); // NOI18N
+        logoimage.setText("jLabel2");
+
+        javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
+        navbar.setLayout(navbarLayout);
+        navbarLayout.setHorizontalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        navbarLayout.setVerticalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 237, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(281, 281, 281)
+                .addContainerGap()
+                .addComponent(navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jButton1)
                     .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleLabel)
                     .addComponent(legend, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(242, Short.MAX_VALUE))
+                .addContainerGap(234, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -173,15 +301,34 @@ public class SiteMap extends javax.swing.JFrame {
                 .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(575, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         setBounds(0, 0, 1025, 787);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        new PropertiesWindow(loggedIn).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
+        new PropertiesWindow(loggedIn).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_dashboardButtonActionPerformed
+
+    private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
+        new SiteMap(loggedIn, ep).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_sitemapButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -209,9 +356,14 @@ public class SiteMap extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dashboardButton;
     private javax.swing.JPanel gridPanel;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel legend;
+    private javax.swing.JLabel logoimage;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JPanel navbar;
+    private javax.swing.JButton sitemapButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }

@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     
     public static ArrayList<Client> clients = new ArrayList<>();
     public static ArrayList<Agent> agents = new ArrayList<>();
+    private Client loggedIn;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
 
