@@ -6,6 +6,9 @@ package MyApp;
 
 import MyLib.EstateProperties;
 import MyLib.Property;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -40,6 +43,17 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        btnSearch = new java.awt.Button();
+        inputSize = new javax.swing.JTextField();
+        inputBlock = new javax.swing.JTextField();
+        inputPrice = new javax.swing.JTextField();
+        cmbModel = new javax.swing.JComboBox<>();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        btnReset = new java.awt.Button();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -48,46 +62,189 @@ public class PropertiesWindow extends javax.swing.JFrame {
             new Object [][] {
             },
             new String [] {
-                "Block", "Lot", "Price", "Size (sqm)", "Model", "Status"
+                "Block", "Lot", "Size (sqm)", "Price", "Model", "Status"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
+
+        btnSearch.setLabel("Search Property");
+        btnSearch.addActionListener(this::btnSearchActionPerformed);
+
+        cmbModel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Anica", "Alice", "Thea", "Adelle" }));
+
+        jLabel1.setText("Enter Size:");
+
+        jLabel2.setText("Enter Block:");
+
+        jLabel3.setText("Enter Price:");
+
+        jLabel4.setText("Select Mode:");
+
+        btnReset.setLabel("Reset Search");
+        btnReset.addActionListener(this::btnResetActionPerformed);
+
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
+        jLabel5.setText("Browse Properties");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(193, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 620, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(228, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel5)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(inputBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                                .addComponent(jLabel2)
+                                                .addGap(101, 101, 101)))
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(inputSize, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel1))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(inputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel3))))
+                                .addGap(12, 12, 12)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel4)
+                            .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(131, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 446, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(39, 39, 39))
+                .addGap(39, 39, 39)
+                .addComponent(jLabel5)
+                .addGap(38, 38, 38)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(inputBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputSize, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(inputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(30, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void btnSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSearchActionPerformed
+        // TODO add your handling code here:
+        
+        Integer blockLoc = null;
+        Double price = null;
+        Double size = null;
+        String model = null;
+
+        String blockText = inputBlock.getText().trim();
+        if (!blockText.isEmpty()) {
+            try {
+                blockLoc = Integer.parseInt(blockText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Block Number", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        String priceText = inputPrice.getText().trim();
+        if (!priceText.isEmpty()) {
+            try {
+                price = Double.parseDouble(priceText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Price Format", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        String sizeText = inputSize.getText().trim();
+        if (!sizeText.isEmpty()) {
+            try {
+                size = Double.parseDouble(sizeText);
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(this, "Invalid Size Format", "Error", JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        }
+
+        String selectedModel = cmbModel.getSelectedItem().toString();
+        if (!selectedModel.equals("-")) {
+            model = selectedModel;
+        }
+
+        ArrayList<Property> results = ep.searchProperties(blockLoc, price, size, model);
+
+        updateTable(results);
+    }//GEN-LAST:event_btnSearchActionPerformed
+
+    private void btnResetActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnResetActionPerformed
+        // TODO add your handling code here:
+        
+        if (evt.getSource() == btnReset) {
+            inputBlock.setText("");
+            inputPrice.setText("");
+            inputSize.setText("");
+            
+            cmbModel.setSelectedIndex(0);
+            
+            loadProperties();
+        }
+    }//GEN-LAST:event_btnResetActionPerformed
+
     private void loadProperties() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        
-        // Clear existing rows if any
+
         model.setRowCount(0);
 
-        // Loop through the properties
         for (Property p : ep.getProperties()) {
-            // Add a row with the data from the Property object
-            // Order must match the column names defined in initComponents
             Object[] row = {
                 p.getBlockLoc(),
                 p.getLotLoc(),
-                String.format("₱ %.2f", p.getPrice()), // Format price nicely
                 p.getSize(),
+                String.format("₱ %.2f", p.getPrice()),
+                p.getModel().getModelName(),
+                p.getStatus()
+            };
+            model.addRow(row);
+            
+            updateTable(ep.getProperties());
+        }
+    }
+    
+    private void updateTable(ArrayList<Property> list) {
+        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
+        model.setRowCount(0);
+
+        for (Property p : list) {
+            Object[] row = {
+                p.getBlockLoc(),
+                p.getLotLoc(),
+                p.getSize(),
+                String.format("₱ %.2f", p.getPrice()),
                 p.getModel().getModelName(),
                 p.getStatus()
             };
@@ -121,6 +278,17 @@ public class PropertiesWindow extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button btnReset;
+    private java.awt.Button btnSearch;
+    private javax.swing.JComboBox<String> cmbModel;
+    private javax.swing.JTextField inputBlock;
+    private javax.swing.JTextField inputPrice;
+    private javax.swing.JTextField inputSize;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
