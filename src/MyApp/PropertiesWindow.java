@@ -303,7 +303,26 @@ public class PropertiesWindow extends javax.swing.JFrame {
             return; 
         }
         
-        Property chosenProperty = new Property(blockNum, lotNum);
+        // Find the actual Property from ALL properties
+        Property chosenProperty = null;
+        for (Property p : ep.getProperties()) {
+            if (p.getBlockLoc() == blockNum && p.getLotLoc() == lotNum) {
+                chosenProperty = p;
+                break;
+            }
+        }
+        
+        // Check if property exists
+        if (chosenProperty == null) {
+            JOptionPane.showMessageDialog(this, "Property not found with Block " + blockNum + " and Lot " + lotNum, "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        // Check if property is available
+        if (!chosenProperty.getStatus().equals("Available")) {
+            JOptionPane.showMessageDialog(this, "This property is not available for transaction", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
         
         TransactionWindow transactWindow = new TransactionWindow(chosenProperty, loggedIn);
         transactWindow.setVisible(true);
