@@ -105,8 +105,8 @@ public class SiteMap extends javax.swing.JFrame {
 
         javax.swing.JPanel bottomPanel = new javax.swing.JPanel();
         bottomPanel.setBorder(javax.swing.BorderFactory.createEmptyBorder(10, 0, 20, 0));
-        returnButton.setPreferredSize(new java.awt.Dimension(200, 35));
-        bottomPanel.add(returnButton);
+        jButton1.setPreferredSize(new java.awt.Dimension(200, 35));
+        bottomPanel.add(jButton1);
 
         javax.swing.JPanel contentArea = new javax.swing.JPanel(new java.awt.BorderLayout(5, 5));
         contentArea.add(topPanel, java.awt.BorderLayout.NORTH);
@@ -132,7 +132,7 @@ public class SiteMap extends javax.swing.JFrame {
         titleLabel = new javax.swing.JLabel();
         legend = new javax.swing.JLabel();
         gridPanel = new javax.swing.JPanel();
-        returnButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setPreferredSize(new java.awt.Dimension(1025, 787));
@@ -146,8 +146,8 @@ public class SiteMap extends javax.swing.JFrame {
 
         gridPanel.setLayout(new java.awt.GridLayout(20, 5));
 
-        returnButton.setText("<- Return to dashboard");
-        returnButton.addActionListener(this::returnButtonActionPerformed);
+        jButton1.setText("<- Return to dashboard");
+        jButton1.addActionListener(this::jButton1ActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -156,7 +156,7 @@ public class SiteMap extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(281, 281, 281)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(returnButton)
+                    .addComponent(jButton1)
                     .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(titleLabel)
                     .addComponent(legend, javax.swing.GroupLayout.PREFERRED_SIZE, 502, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -172,16 +172,16 @@ public class SiteMap extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(gridPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(returnButton)
+                .addComponent(jButton1)
                 .addContainerGap(575, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1025, 787);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void returnButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_returnButtonActionPerformed
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         this.dispose();
-    }//GEN-LAST:event_returnButtonActionPerformed
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -210,8 +210,8 @@ public class SiteMap extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel gridPanel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel legend;
-    private javax.swing.JButton returnButton;
     private javax.swing.JLabel titleLabel;
     // End of variables declaration//GEN-END:variables
 }
