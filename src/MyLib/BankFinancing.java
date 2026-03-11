@@ -26,45 +26,60 @@ public class BankFinancing extends Transaction {
     public void computePayment(){
         String modelName;
 
-        double totalContractPrice;
-        double reservationFee;
-        double dpPercent;
-        double requiredDP;
-        double netDP;
-        double monthlyEquity;
-        double loanableAmount;
+        double totalContractPrice = 0.0;
+        double reservationFee = 0.0;
+        double dpPercent = 0.0;
+        double requiredDP = 0.0;
+        double netDP = 0.0;
+        double dPTerm = 0.0;
+        double loanableAmount = 0.0;
         
         String[] arr = {"Anica", "Alice", "Thea", "Adelle"};
-        int select = nextInt(arr.length);
         modelName = arr[select];
 
         if (modelName.equals("Adelle")) {
 
+            totalContractPrice = 4040600.00;
+            reservationFee = 20000.00;
+            dpPercent = 0.15; // 15%
+
+            netDP = requiredDP - reservationFee;
+            dPTerm = netDP / 18; // 18 months DP
+            
         } else if (modelName.equals("Alice")) {
             
-            // 1. Base Values
             totalContractPrice = 2783000.00;
             reservationFee = 15000.00;
+            dpPercent = 0.10; // 10%
 
-            // 2. Downpayment Calculations (10% DP for 12 months)
-            dpPercent = 0.10;
-            requiredDP = totalContractPrice * dpPercent;
             netDP = requiredDP - reservationFee;
-            monthlyEquity = netDP / 12; // Monthly payment for 12 months
-
-            // 3. Loanable Amount (90% remaining)
-            loanableAmount = totalContractPrice - requiredDP;
-
-            // Update your JFrame Labels
-            lblTotalAmount.setText(String.format("%.2f php", totalContractPrice));
-            lblReservationFee.setText(String.format("%.2f php", reservationFee));
-            lblMonthlyEquity.setText(String.format("%.2f php", monthlyEquity));
+            dPTerm = netDP / 12;
 
         } else if (modelName.equals("Thea")) {
 
+            totalContractPrice = 3905500.00;
+            reservationFee = 15000.00;
+            dpPercent = 0.125; // 12.5%
+
+            netDP = requiredDP - reservationFee;
+            dPTerm = netDP / 21; //21 months
+            
         } else if (modelName.equals("Anica")) {
 
+            totalContractPrice = 3153400.00;
+            reservationFee = 10000.00;
+            dpPercent = 0.15; // 15%
+
+            netDP = requiredDP - reservationFee;
+            dPTerm = netDP / 18; // months
+            
+            
         }
+        
+            //Shared Computation
+            requiredDP = totalContractPrice * dpPercent;
+            loanableAmount = totalContractPrice - requiredDP;
+            
     }
     
     @Override
