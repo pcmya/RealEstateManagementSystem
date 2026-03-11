@@ -15,7 +15,7 @@ public class Reserve extends Transaction{
         super(client, property);
     }
     
-    public 
+    
     @Override
     public void computePayment(){
         
