@@ -76,7 +76,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
         jLabel2.setText("Enter Block:");
 
-        jLabel3.setText("Enter Price:");
+        jLabel3.setText("Enter Your Budget:");
 
         jLabel4.setText("Select Mode:");
 
