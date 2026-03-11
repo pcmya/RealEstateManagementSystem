@@ -24,7 +24,40 @@ public class BankFinancing extends Transaction {
     
     @Override
     public void computePayment(){
+        String modelName;
 
+        String[] arr = {"Anica", "Alice", "Thea", "Adelle"};
+        int select = nextInt(arr.length);
+        modelName = arr[select];
+
+        if (modelName.equals("Adelle")) {
+
+        } else if (modelName.equals("Alice")) {
+            // 1. Base Values
+            double totalContractPrice = 2783000.00; // From your JFrame
+            double reservationFee = 15000.00;
+
+            // 2. Downpayment Calculations (10% DP for 12 months)
+            double dpPercent = 0.10;
+            double requiredDP = totalContractPrice * dpPercent;
+            double netDP = requiredDP - reservationFee;
+            double monthlyEquity = netDP / 12; // Monthly payment for 12 months
+
+            // 3. Loanable Amount (The 90% remaining)
+            double loanableAmount = totalContractPrice - requiredDP;
+
+            // Update your JFrame Labels (Check your actual variable names)
+            lblTotalAmount.setText(String.format("%.2f php", totalContractPrice));
+            lblReservationFee.setText(String.format("%.2f php", reservationFee));
+            lblMonthlyEquity.setText(String.format("%.2f php", monthlyEquity));
+
+            // Note: You can also display the Loanable Amount in a label if you have one
+            System.out.println("Loanable Amount: " + loanableAmount);
+        } else if (modelName.equals("Thea")) {
+
+        } else if (modelName.equals("Anica")) {
+
+        }
     }
     
     @Override

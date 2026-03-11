@@ -24,7 +24,21 @@ public class PagIBIG extends Transaction {
     
     @Override
     public void computePayment(){
+            String modelName;
+            
+            String[] arr = {"Anica", "Alice", "Thea", "Adelle"};
+            int select = nextInt(arr.length);
+            modelName = arr[select];
 
+            if (modelName.equals("Adelle")) {
+                
+            } else if(modelName.equals ("Alice")) {
+                
+            } else if(modelName.equals("Thea")){
+                
+            } else if (modelName.equals("Anica")){
+                
+            }
     }
     
     @Override
