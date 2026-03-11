@@ -10,15 +10,13 @@ package MyLib;
  */
 public class Cash extends Transaction {
     
-    public Cash (String Client, String Property){
+    public Cash (Client Client, Property Property){
         super (Client, Property);
     }
     
     @Override
     public void computePayment(){
-        double tcp; //totalcontractprice
-        double reservation = 15000.00;
-        this.payment = (tcp - reservation) / 24;
+
     }
     
     @Override
