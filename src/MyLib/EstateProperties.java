@@ -68,4 +68,13 @@ public class EstateProperties {
         } 
         return result;
     }
+    
+    public Property getPropertyByLotNumber(int lotNumber) {
+    for (Property p : properties) {
+        if (p.getLotLoc() == lotNumber) {
+            return p;
+        }
+    }
+    return null;
+    }
 }
