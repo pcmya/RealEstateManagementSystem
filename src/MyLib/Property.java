@@ -14,7 +14,7 @@ public class Property {
     private double price;
     private double size;
     private PropertyModel model;
-    private String status;
+    private String status = "Available";
 
     public Property(int blockLoc, int lotLoc, double price, double size, PropertyModel model) {
         this.blockLoc = blockLoc;
@@ -23,4 +23,29 @@ public class Property {
         this.size = size;
         this.model = model;
     }
+
+    public int getBlockLoc() {
+        return blockLoc;
+    }
+
+    public int getLotLoc() {
+        return lotLoc;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public double getSize() {
+        return size;
+    }
+
+    public PropertyModel getModel() {
+        return model;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+    
 }
