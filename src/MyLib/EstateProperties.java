@@ -22,7 +22,7 @@ public class EstateProperties {
         Random r = new Random();
         for(int blockLoc = 1; blockLoc <= 5; blockLoc++) {
             for(int lotLoc = 1; lotLoc <= 20; lotLoc++) {
-                double size = 0;
+                double size = 50;
                 double price = 0;
                 String modelName;
                 
@@ -61,7 +61,7 @@ public class EstateProperties {
         for (Property p : properties) {
             if ((blockLoc == null || p.getBlockLoc() == blockLoc)
                 && (size == null || p.getSize() == size)
-                && (price == null || p.getPrice() >= price)
+                && (price == null || p.getPrice() <= price)
                 && (model == null || p.getModel().getModelName().equals(model))) {
                 result.add(p);
             }

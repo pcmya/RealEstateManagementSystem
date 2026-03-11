@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
+import static MyApp.Login.clients;
 import MyLib.Client;
 import MyLib.Agent;
 import MyLib.Admin;
@@ -18,9 +19,6 @@ import javax.swing.JOptionPane;
  */
 public class Register extends javax.swing.JFrame {
     
-    public static ArrayList<Client> clients = new ArrayList<>();
-    public static ArrayList<Agent> agents = new ArrayList<>();
-    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Register.class.getName());
 
     /**
@@ -29,12 +27,10 @@ public class Register extends javax.swing.JFrame {
     public Register() {
     initComponents();
 
-    ImageIcon raw = new ImageIcon(getClass().getResource("/MyApp/images/lancaster logo.png"));
-    Image scaled = raw.getImage().getScaledInstance(350, 200, Image.SCALE_SMOOTH);
-    logoimage.setIcon(new ImageIcon(scaled));
-    logoimage.setText("");
-    
-    clients.add(new Client("Aaron","aaron@gmail.com","lius","password1","0916123456"));
+        ImageIcon raw = new ImageIcon(getClass().getResource("/MyApp/images/lancaster logo.png"));
+        Image scaled = raw.getImage().getScaledInstance(350, 200, Image.SCALE_SMOOTH);
+        logoimage.setIcon(new ImageIcon(scaled));
+        logoimage.setText("");
     }
     
     /**
@@ -139,7 +135,7 @@ public class Register extends javax.swing.JFrame {
                 .addContainerGap(50, Short.MAX_VALUE))
         );
 
-        pack();
+        setBounds(0, 0, 1025, 787);
     }// </editor-fold>//GEN-END:initComponents
 
     private void usernameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_usernameFieldActionPerformed
@@ -151,7 +147,8 @@ public class Register extends javax.swing.JFrame {
     }//GEN-LAST:event_passwordFieldActionPerformed
 
     private void existingLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_existingLoginActionPerformed
-        // TODO add your handling code here:
+        new Login().setVisible(true);
+        this.dispose();
     }//GEN-LAST:event_existingLoginActionPerformed
 
     private void nameFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nameFieldActionPerformed
@@ -175,8 +172,8 @@ public class Register extends javax.swing.JFrame {
     String phone    = phoneField.getText();
     
     Client newClient = new Client(name, email, username, password, phone);
-    Register.clients.add(newClient);
-    System.out.println("Size: " + Register.clients.size());
+    Login.clients.add(newClient);
+    System.out.println("Size: " + Login.clients.size());
     JOptionPane.showMessageDialog(this, "Account created! Please login.");
     }//GEN-LAST:event_registerActionPerformed
 

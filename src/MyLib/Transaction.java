@@ -21,5 +21,4 @@ public abstract class Transaction {
     public abstract void computePayment();
     public abstract void printReceipt();
     
-    
 }
