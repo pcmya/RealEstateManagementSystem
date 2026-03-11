@@ -8,8 +8,7 @@ package MyLib;
  *
  * @author pcmya
  */
-public class Reserve extends Transaction{
-    private Property property; 
+public class Reserve extends Transaction{ 
     
     public Reserve(Client client, Property property) {
         super(client, property);
