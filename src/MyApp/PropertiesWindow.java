@@ -121,6 +121,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
         navbar.setBackground(new java.awt.Color(153, 153, 153));
 
+<<<<<<< OURS
         dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
         dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
         dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
@@ -130,9 +131,12 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
         sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
         sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+=======
+        sitemapButton.setBackground(new java.awt.Color(30, 30, 30));
+        sitemapButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
+>>>>>>> THEIRS
         sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
         sitemapButton.setText("Site map");
-        sitemapButton.setBorder(null);
         sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
 
         logoutButton.setBackground(new java.awt.Color(153, 153, 153));
@@ -157,6 +161,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
         navbarLayout.setVerticalGroup(
             navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navbarLayout.createSequentialGroup()
+<<<<<<< OURS
                 .addGap(287, 287, 287)
                 .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -164,6 +169,11 @@ public class PropertiesWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(128, 128, 128))
+=======
+                .addGap(206, 206, 206)
+                .addComponent(sitemapButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+>>>>>>> THEIRS
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
