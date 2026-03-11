@@ -16,8 +16,20 @@ public class Agent extends SystemUser {
         this.agentID = agentID;
     }
 
-    @Override
-    public boolean login() {
-        return 100314 == agentID && "agent321$".equals(getPassword());
+    public boolean login(int agentID, String password) {
+        return this.agentID == agentID &&
+                this.getPassword().equals(password);
+    }
+    
+    public int getAgentID(){
+        return agentID;
+    }
+    
+    public String getName(){
+        return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
     }
 }
