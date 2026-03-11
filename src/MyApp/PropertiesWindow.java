@@ -26,14 +26,13 @@ public class PropertiesWindow extends javax.swing.JFrame {
      * Creates new form Properties
      */
     EstateProperties ep;
-    
-    
-    public PropertiesWindow(Client client) {  // ← accept client here
+
+    public PropertiesWindow(Client client) {  
         initComponents();
         ep = new EstateProperties();
         loadProperties();
 
-        this.loggedIn = client;  // ← now client exists!
+        this.loggedIn = client;  
         greetingLabel.setText("Welcome, " + loggedIn.getName() + "!");
     }
 
@@ -59,10 +58,9 @@ public class PropertiesWindow extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnReset = new java.awt.Button();
         jLabel5 = new javax.swing.JLabel();
-        btnBuy = new java.awt.Button();
-        btnReserve = new java.awt.Button();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        btnProceedTransact = new java.awt.Button();
+        chosenBlockInput = new javax.swing.JTextField();
+        chosenLotInput = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         greetingLabel = new javax.swing.JLabel();
@@ -82,6 +80,10 @@ public class PropertiesWindow extends javax.swing.JFrame {
         btnSearch.setLabel("Search Property");
         btnSearch.addActionListener(this::btnSearchActionPerformed);
 
+        inputSize.addActionListener(this::inputSizeActionPerformed);
+
+        inputBlock.addActionListener(this::inputBlockActionPerformed);
+
         cmbModel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-", "Anica", "Alice", "Thea", "Adelle" }));
 
         jLabel1.setText("Enter Size:");
@@ -98,11 +100,12 @@ public class PropertiesWindow extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel5.setText("Dashboard");
 
-        btnBuy.setLabel("BUY PROPERTY");
-        btnBuy.addActionListener(this::btnBuyActionPerformed);
+        btnProceedTransact.setLabel("PROCEED TRANSACTION");
+        btnProceedTransact.addActionListener(this::btnProceedTransactActionPerformed);
 
-        btnReserve.setLabel("RESERVE PROPERTY");
-        btnReserve.addActionListener(this::btnReserveActionPerformed);
+        chosenBlockInput.addActionListener(this::chosenBlockInputActionPerformed);
+
+        chosenLotInput.addActionListener(this::chosenLotInputActionPerformed);
 
         jLabel6.setText("Enter Desired Block:");
 
@@ -122,7 +125,6 @@ public class PropertiesWindow extends javax.swing.JFrame {
                         .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -142,19 +144,19 @@ public class PropertiesWindow extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel7)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel6))
-                        .addGap(59, 59, 59)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnReserve, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(137, 137, 137))
                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(greetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(greetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 618, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(chosenBlockInput))
+                            .addGap(18, 18, 18)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jLabel7)
+                                .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnProceedTransact, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(43, 43, 43))
         );
         layout.setVerticalGroup(
@@ -182,22 +184,19 @@ public class PropertiesWindow extends javax.swing.JFrame {
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(chosenBlockInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(44, 44, 44)
-                        .addComponent(btnReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnBuy, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 45, Short.MAX_VALUE))
+                        .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(19, 19, 19)
+                .addComponent(btnProceedTransact, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 36, Short.MAX_VALUE))
         );
 
         pack();
@@ -265,19 +264,32 @@ public class PropertiesWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void btnBuyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBuyActionPerformed
+    private void btnProceedTransactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedTransactActionPerformed
         // TODO add your handling code here:
+        
+        String chosenBlockText = chosenBlockInput.getText().trim();
+        String chosenLotText = chosenLotInput.getText().trim();
+        
         Transaction transactWindow = new Transaction();
         transactWindow.setVisible(true);
         dispose();
-    }//GEN-LAST:event_btnBuyActionPerformed
+    }//GEN-LAST:event_btnProceedTransactActionPerformed
 
-    private void btnReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnReserveActionPerformed
+    private void chosenBlockInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chosenBlockInputActionPerformed
         // TODO add your handling code here:
-        Transaction transactWindow = new Transaction();
-        transactWindow.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnReserveActionPerformed
+    }//GEN-LAST:event_chosenBlockInputActionPerformed
+
+    private void chosenLotInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chosenLotInputActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_chosenLotInputActionPerformed
+
+    private void inputBlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBlockActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputBlockActionPerformed
+
+    private void inputSizeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputSizeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_inputSizeActionPerformed
 
     private void loadProperties() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -290,7 +302,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
                 p.getLotLoc(),
                 p.getSize(),
                 String.format("₱ %.2f", p.getPrice()),
-                p.getModel().getModelName(),
+                p.getModel().displayModelDetails(),
                 p.getStatus()
             };
             model.addRow(row);
@@ -309,7 +321,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
                 p.getLotLoc(),
                 p.getSize(),
                 String.format("₱ %.2f", p.getPrice()),
-                p.getModel().getModelName(),
+                p.getModel().displayModelDetails(),
                 p.getStatus()
             };
             model.addRow(row);
@@ -337,15 +349,16 @@ public class PropertiesWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new PropertiesWindow().setVisible(true));
+        /* Create and display the form 
+        java.awt.EventQueue.invokeLater(() -> new PropertiesWindow().setVisible(true));*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnBuy;
-    private java.awt.Button btnReserve;
+    private java.awt.Button btnProceedTransact;
     private java.awt.Button btnReset;
     private java.awt.Button btnSearch;
+    private javax.swing.JTextField chosenBlockInput;
+    private javax.swing.JTextField chosenLotInput;
     private javax.swing.JComboBox<String> cmbModel;
     private javax.swing.JLabel greetingLabel;
     private javax.swing.JTextField inputBlock;
@@ -360,7 +373,5 @@ public class PropertiesWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
 }

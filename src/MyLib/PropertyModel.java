@@ -41,7 +41,7 @@ public class PropertyModel {
             bedNum = 4;
             bathNum = 2;
         }
-        return modelName + " (" + bedNum + " BR, " + bathNum + " T&B)";
+        return modelName + " (" + bedNum + " BR, " + bathNum + " TB)";
     }
     
     public String getModelName() {
