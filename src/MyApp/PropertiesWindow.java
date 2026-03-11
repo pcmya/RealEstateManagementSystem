@@ -118,10 +118,11 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
         navbar.setBackground(new java.awt.Color(102, 102, 102));
 
-        sitemapButton.setBackground(new java.awt.Color(30, 30, 30));
+        sitemapButton.setBackground(new java.awt.Color(102, 102, 102));
         sitemapButton.setFont(new java.awt.Font("Helvetica Neue", 1, 18)); // NOI18N
         sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
         sitemapButton.setText("Site map");
+        sitemapButton.setBorder(null);
         sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
 
         javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
@@ -137,7 +138,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
             navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(navbarLayout.createSequentialGroup()
                 .addGap(206, 206, 206)
-                .addComponent(sitemapButton)
+                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
