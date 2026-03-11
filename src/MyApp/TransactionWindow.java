@@ -29,7 +29,7 @@ public class TransactionWindow extends javax.swing.JFrame {
     
     EstateProperties ep; 
     
-    Reserve reserve;
+    ReserveView reserve;
     Cash cash;
 
     public TransactionWindow(Property chosenBlkLot, Client loggedIn) {
@@ -38,7 +38,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         this.loggedIn = loggedIn;
         ep = new EstateProperties();
         displayChosenProperty();
-        reserve = new Reserve(loggedIn, chosenBlkLot);
+        reserve = new ReserveView(loggedIn, chosenBlkLot);
         cash = new Cash(loggedIn, chosenBlkLot);
     }
 

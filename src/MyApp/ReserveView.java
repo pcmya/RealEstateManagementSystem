@@ -9,19 +9,19 @@ import java.util.ArrayList;
  *
  * @author emarie
  */
-public class Reserve extends javax.swing.JFrame {
+public class ReserveView extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Reserve.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ReserveView.class.getName());
     
     /**
      * Creates new form Reserve
      */
-    public Reserve() {
+    public ReserveView() {
         initComponents();
         reservePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
     }
     
-    public Reserve(ArrayList<MyLib.Reserve> userList) {
+    public ReserveView(ArrayList<MyLib.Reserve> userList) {
         initComponents();
         reservePanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING));
         reservationDisplay(userList);
@@ -168,8 +168,8 @@ public class Reserve extends javax.swing.JFrame {
             ArrayList<MyLib.Reserve> testList = new ArrayList<>();
             
           //  MyLib.Property p = new MyLib.Property("Block 1", "Lot 5");
-            //MyLib.Reserve r = new MyLib.Reserve(null, p);
-            new Reserve(testList).setVisible(true);
+            //MyLib.ReserveView r = new MyLib.ReserveView(null, p);
+            new ReserveView(testList).setVisible(true);
         });
            
     }
