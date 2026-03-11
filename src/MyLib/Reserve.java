@@ -9,11 +9,13 @@ package MyLib;
  * @author pcmya
  */
 public class Reserve extends Transaction{
-
+    private Property property; 
+    
     public Reserve(Client client, Property property) {
         super(client, property);
     }
     
+    public 
     @Override
     public void computePayment(){
         
