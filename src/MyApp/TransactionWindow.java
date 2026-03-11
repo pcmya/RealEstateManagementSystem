@@ -12,6 +12,7 @@ import MyLib.EstateProperties;
 import MyLib.Property;
 import MyLib.Reserve;
 import MyLib.Transaction;
+import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -28,16 +29,17 @@ public class TransactionWindow extends javax.swing.JFrame {
     private Client loggedIn;
     private Property chosenBlkLot;
     
-    EstateProperties ep; 
+    private EstateProperties ep; 
     
     Reserve reserve;
     Cash cash;
 
-    public TransactionWindow(Property chosenBlkLot, Client client) {
+    public TransactionWindow(Property chosenBlkLot, Client client, EstateProperties ep) {
         initComponents();
         this.chosenBlkLot = chosenBlkLot;
         this.loggedIn = client;
-        ep = new EstateProperties();
+        this.ep = ep;
+        
         displayChosenProperty();
         reserve = new Reserve(loggedIn, chosenBlkLot);
         cash = new Cash(loggedIn, chosenBlkLot);
@@ -73,7 +75,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         jLabel33 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        confirmTransactBtn = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel31 = new javax.swing.JLabel();
@@ -233,10 +235,10 @@ public class TransactionWindow extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel2.setText("Payment Method");
 
-        jButton1.setBackground(new java.awt.Color(204, 204, 204));
-        jButton1.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
-        jButton1.setLabel("Confirm Transaction");
-        jButton1.addActionListener(this::jButton1ActionPerformed);
+        confirmTransactBtn.setBackground(new java.awt.Color(204, 204, 204));
+        confirmTransactBtn.setFont(new java.awt.Font("Segoe UI", 0, 18)); // NOI18N
+        confirmTransactBtn.setLabel("Confirm Transaction");
+        confirmTransactBtn.addActionListener(this::confirmTransactBtnActionPerformed);
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel17.setText("Selected Lot");
@@ -289,7 +291,7 @@ public class TransactionWindow extends javax.swing.JFrame {
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(receiptPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                    .addComponent(confirmTransactBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(503, 503, 503)))))
@@ -313,7 +315,7 @@ public class TransactionWindow extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(receiptPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(confirmTransactBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(comboBuyReserve, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -363,22 +365,42 @@ public class TransactionWindow extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void confirmTransactBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmTransactBtnActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+        String buyReserveSelect = comboBuyReserve.getSelectedItem().toString();
+        
+        if (buyReserveSelect.equals("Reserve Lot")) {
+            chosenBlkLot.setStatus("Reserved");
+        }
+        else if (buyReserveSelect.equals("Buy Lot")) {
+            chosenBlkLot.setStatus("Sold");
+        }
+        else {
+            JOptionPane.showMessageDialog(this, "Please select an action (Buy or Reserve)", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+        displayChosenProperty();
+        
+        if (ep != null) {
+            
+        }
+        
+        JOptionPane.showMessageDialog(this, "Successful Transaction!", "Thank you", JOptionPane.PLAIN_MESSAGE);
+        
+        PropertiesWindow pw = new PropertiesWindow(loggedIn);
+        pw.setVisible(true);
+        dispose();
+        
+    }//GEN-LAST:event_confirmTransactBtnActionPerformed
 
     private void comboBuyReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBuyReserveActionPerformed
         // TODO add your handling code here:
         String buyReserveSelect = comboBuyReserve.getSelectedItem().toString();
         
         if (buyReserveSelect.equals("Buy Lot")) {
-            // Update Total Contract Price
             tcpInfo.setText(String.format("₱ %.2f", chosenBlkLot.getPrice()));
-            
-            // Update Reservation Fee
             reservFeeInfo.setText("₱ 15,000.00");
-            
-            // Update Monthly Equity
             jLabel26.setText("₱ 0.00");
         }
         if (buyReserveSelect.equals("Reserve Lot")) {
@@ -453,7 +475,7 @@ public class TransactionWindow extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> comboBuyReserve;
     private javax.swing.JComboBox<String> comboPayMethod;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton confirmTransactBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;

@@ -25,11 +25,12 @@ public class PropertiesWindow extends javax.swing.JFrame {
     /**
      * Creates new form Properties
      */
+    
     EstateProperties ep;
 
     public PropertiesWindow(Client client) {  
         initComponents();
-        ep = new EstateProperties();
+        ep = EstateProperties.getInstance();
         loadProperties();
 
         this.loggedIn = client;  
@@ -388,7 +389,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
             return;
         }
         
-        TransactionWindow transactWindow = new TransactionWindow(chosenProperty, loggedIn);
+        TransactionWindow transactWindow = new TransactionWindow(chosenProperty, loggedIn, EstateProperties.getInstance());
         transactWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnProceedTransactActionPerformed
@@ -433,6 +434,8 @@ public class PropertiesWindow extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
 
         model.setRowCount(0);
+        
+        EstateProperties ep = EstateProperties.getInstance();
 
         for (Property p : ep.getProperties()) {
             Object[] row = {

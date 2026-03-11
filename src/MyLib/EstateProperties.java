@@ -4,6 +4,7 @@
  */
 package MyLib;
 
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -12,7 +13,8 @@ import java.util.Random;
  * @author pcmya
  */
 public class EstateProperties {
-    public ArrayList<Property> properties = new ArrayList<>();
+    private static EstateProperties instance;
+    private ArrayList<Property> properties = new ArrayList<>();
 
     public EstateProperties() {
         addProperty();
@@ -75,6 +77,14 @@ public class EstateProperties {
             return p;
         }
     }
-    return null;
+        return null;
     }
+    
+    public static EstateProperties getInstance() {
+        if (instance == null) {
+            instance = new EstateProperties();
+        }
+        return instance;
+    }
+    
 }
