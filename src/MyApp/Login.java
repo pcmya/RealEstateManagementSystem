@@ -34,7 +34,7 @@ public class Login extends javax.swing.JFrame {
     }
     
     static {
-    clients.add(new Client("Aaron","aaron@gmail.com","lius","password1","0916123456"));
+    clients.add(new Client("User","sampleuser@gmail.com","sample_user","password1","0916123456"));
     }
 
     /**
