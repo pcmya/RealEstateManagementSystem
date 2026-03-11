@@ -9,12 +9,15 @@ package MyLib;
  * @author pcmya
  */
 public class Reserve extends Transaction{ 
+    private Property property;
     
     public Reserve(Client client, Property property) {
         super(client, property);
     }
     
-    
+    public Property getProperty(){
+        return this.property;
+    }
     @Override
     public void computePayment(){
         
