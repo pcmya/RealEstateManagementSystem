@@ -22,13 +22,23 @@ public class EstateProperties {
         Random r = new Random();
         for(int blockLoc = 1; blockLoc <= 5; blockLoc++) {
             for(int lotLoc = 1; lotLoc <= 10; lotLoc++) {
-                double size = 50 + r.nextInt(21);     
-                double price = 0;
-                    if (size >= 60) { price = size * 63200; }
-                    if (size >= 50 && size < 60) { price = size * 41320; }  
+                double size;
+                double price;
+                String modelName;
+                
                 String [] arr = {"Anica", "Alice", "Thea", "Adelle"};
                 int select = r.nextInt(arr.length);
-                String modelName = arr[select];
+                modelName = arr[select];
+                
+                if (modelName.equals("Adelle")) {
+                    size = 60;
+                    price = 5436700;
+                }
+                else {
+                    size = 50;
+                    price = 2320910 + r.nextDouble(15944490);
+                }
+                
                 properties.add(new Property(blockLoc, lotLoc, price, size, new PropertyModel(modelName)));
             }
         }
@@ -42,9 +52,9 @@ public class EstateProperties {
         ArrayList<Property> result = new ArrayList<>();
         for (Property p : properties) {
             if ((blockLoc == null || p.getBlockLoc() == blockLoc)
-                    && (size == null || p.getSize() >= size)
-                    && (price == null || p.getPrice() >= price)
-                    && (model == null || p.getModel().getModelName() == model)) {
+                && (size == null || p.getSize() >= size)
+                && (price == null || p.getPrice() >= price)
+                && (model == null || p.getModel().getModelName() == model)) {
                 result.add(p);
             }
         } 

@@ -14,7 +14,7 @@ public class Property {
     private double price;
     private double size;
     private PropertyModel model;
-    private String status;
+    private String status = "Available";
 
     public Property(int blockLoc, int lotLoc, double price, double size, PropertyModel model) {
         this.blockLoc = blockLoc;
@@ -46,7 +46,6 @@ public class Property {
 
     public String getStatus() {
         return status;
-    
     }
     
 }
