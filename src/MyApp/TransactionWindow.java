@@ -389,6 +389,11 @@ public class TransactionWindow extends javax.swing.JFrame {
         dispose();
         
     }//GEN-LAST:event_confirmTransactBtnActionPerformed
+<<<<<<< HEAD
+=======
+        
+    }                                        
+>>>>>>> 505d98f (tesT)
 
     private void comboBuyReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBuyReserveActionPerformed
         // TODO add your handling code here:
