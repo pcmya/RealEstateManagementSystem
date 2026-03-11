@@ -125,21 +125,18 @@ public class PropertiesWindow extends javax.swing.JFrame {
 
         dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
         dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
         dashboardButton.setText("Dashboard");
         dashboardButton.setBorder(null);
         dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
 
         sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
         sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
         sitemapButton.setText("Site map");
         sitemapButton.setBorder(null);
         sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
 
         logoutButton.setBackground(new java.awt.Color(153, 153, 153));
         logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        logoutButton.setForeground(new java.awt.Color(0, 0, 0));
         logoutButton.setText("Log out");
         logoutButton.setBorder(null);
         logoutButton.addActionListener(this::logoutButtonActionPerformed);
