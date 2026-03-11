@@ -303,7 +303,9 @@ public class PropertiesWindow extends javax.swing.JFrame {
             return; 
         }
         
-        TransactionWindow transactWindow = new TransactionWindow(blockNum, lotNum);
+        Property chosenProperty = new Property(blockNum, lotNum);
+        
+        TransactionWindow transactWindow = new TransactionWindow(chosenProperty, loggedIn);
         transactWindow.setVisible(true);
         dispose();
     }//GEN-LAST:event_btnProceedTransactActionPerformed

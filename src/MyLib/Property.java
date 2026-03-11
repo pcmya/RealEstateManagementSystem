@@ -23,6 +23,11 @@ public class Property {
         this.size = size;
         this.model = model;
     }
+    
+    public Property(int blockLoc, int lotLoc) {
+        this.blockLoc = blockLoc;
+        this.lotLoc = lotLoc;
+    }
 
     public int getBlockLoc() {
         return blockLoc;

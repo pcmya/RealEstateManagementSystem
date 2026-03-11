@@ -4,6 +4,10 @@
  */
 package MyApp;
 
+import MyLib.Client;
+import MyLib.Property;
+import MyLib.Transaction;
+
 /**
  *
  * @author Fidel
@@ -15,9 +19,13 @@ public class TransactionWindow extends javax.swing.JFrame {
     /**
      * Creates new form Transaction
      */
-    public TransactionWindow(Integer blockNum, Integer lotNum) {
+    private Client loggedIn;
+    private Property chosenBlkLot;
+    
+    public TransactionWindow(Property chosenBlkLot, Client loggedIn) {
         initComponents();
-        
+        this.chosenBlkLot = chosenBlkLot;
+        this.loggedIn = loggedIn;
     }
 
     /**
@@ -429,7 +437,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TransactionWindow(blockNum, lotNum).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new TransactionWindow(blockNum, loggedIn).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
