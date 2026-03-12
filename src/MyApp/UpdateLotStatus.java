@@ -184,6 +184,7 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         if (found) {
             javax.swing.JOptionPane.showMessageDialog(this, 
                 "Successfully updated Block " + selectedBlock + " Lot " + selectedLot + " to " + newStatus);
+            updateCurrentStatusLabel();
         } else {
             javax.swing.JOptionPane.showMessageDialog(this, "Property not found!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
         }
@@ -199,16 +200,23 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         if (this.ep == null) {
             return;
         }
+
         try {
             String blockText = jComboBox1.getSelectedItem().toString().replace("Block ", "").trim();
             String lotText = jComboBox2.getSelectedItem().toString().replace("Lot ", "").trim();
             int b = Integer.parseInt(blockText);
             int l = Integer.parseInt(lotText);
 
-            
             for (MyLib.Property p : this.ep.getProperties()) {
                 if (p.getBlockLoc() == b && p.getLotLoc() == l) {
+
                     jLabel4.setText("Current Status: " + p.getStatus());
+
+                    if (p.getStatus().equalsIgnoreCase("Available")) {
+                        jLabel4.setForeground(new java.awt.Color(0, 153, 0)); 
+                    } else {
+                        jLabel4.setForeground(java.awt.Color.RED); 
+                    }
                     return;
                 }
             }
@@ -216,6 +224,7 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         } catch (Exception e) {
         }
     }
+    
     
     /**
      * @param args the command line arguments
