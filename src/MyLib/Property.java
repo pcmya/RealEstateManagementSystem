@@ -8,6 +8,7 @@ package MyLib;
  *
  * @author pcmya
  */
+
 public class Property {
     private int blockLoc;
     private int lotLoc;
@@ -15,13 +16,15 @@ public class Property {
     private double size;
     private PropertyModel model;
     private String status = "Available";
+    private int agentID;
 
-    public Property(int blockLoc, int lotLoc, double price, double size, PropertyModel model) {
+    public Property(int blockLoc, int lotLoc, double price, double size, PropertyModel model, int agentID) {
         this.blockLoc = blockLoc;
         this.lotLoc = lotLoc;
         this.price = price;
         this.size = size;
         this.model = model;
+        this.agentID = agentID;
     }
     
     public Property(int blockLoc, int lotLoc) {
@@ -56,7 +59,9 @@ public class Property {
     public void setStatus(String status) {
         this.status = status;
     }
-    
-    
+
+    public int getAgentID() {
+        return agentID;
+}
     
 }

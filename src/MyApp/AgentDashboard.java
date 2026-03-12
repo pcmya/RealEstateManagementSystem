@@ -30,10 +30,9 @@ public class AgentDashboard extends javax.swing.JFrame {
 
     public AgentDashboard(Agent agent) {  
         initComponents();
+        this.loggedIn = agent;
         ep = EstateProperties.getInstance();
         loadProperties();
-
-        this.loggedIn = agent;  
         greetingLabel.setText("Welcome, " + loggedIn.getName() + "!");
     }
 
@@ -360,23 +359,20 @@ public class AgentDashboard extends javax.swing.JFrame {
 
     private void loadProperties() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-
         model.setRowCount(0);
-        
-        EstateProperties ep = EstateProperties.getInstance();
 
         for (Property p : ep.getProperties()) {
-            Object[] row = {
-                p.getBlockLoc(),
-                p.getLotLoc(),
-                p.getSize(),
-                String.format("₱ %.2f", p.getPrice()),
-                p.getModel().displayModelDetails(),
-                p.getStatus()
-            };
-            model.addRow(row);
-            
-            updateTable(ep.getProperties());
+            if (p.getAgentID() == loggedIn.getAgentID()) {
+                Object[] row = {
+                    p.getBlockLoc(),
+                    p.getLotLoc(),
+                    p.getSize(),
+                    String.format("₱ %.2f", p.getPrice()),
+                    p.getModel().displayModelDetails(),
+                    p.getStatus()
+                };
+                model.addRow(row);
+            }
         }
     }
     
