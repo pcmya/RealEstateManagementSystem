@@ -4,17 +4,27 @@
  */
 package MyApp;
 
+import MyLib.EstateProperties;
+import MyLib.Property;
 /**
  *
  * @author Fidel
  */
 public class UpdateLotStatus extends javax.swing.JFrame {
     
+    private MyLib.EstateProperties ep;
+    
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UpdateLotStatus.class.getName());
 
     /**
      * Creates new form UpdateLotStatus
      */
+    public UpdateLotStatus(MyLib.EstateProperties ep) {
+        this.ep = ep;
+        initComponents();
+        jTextField1.setText("");
+    }
+    
     public UpdateLotStatus() {
         initComponents();
     }
@@ -62,6 +72,7 @@ public class UpdateLotStatus extends javax.swing.JFrame {
 
         jComboBox2.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Lot 1", "Lot 2", "Lot 3", "Lot 4", "Lot 5", "Lot 6", "Lot 7", "Lot 8 ", "Lot 9", "Lot 10", "Lot 11", "Lot 12", "Lot 13", "Lot 14", "Lot 15", "Lot 16", "Lot 17", "Lot 18", "Lot 19", "Lot 20" }));
+        jComboBox2.addActionListener(this::jComboBox2ActionPerformed);
 
         jLabel4.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jLabel4.setText("Current Status:");
@@ -139,6 +150,7 @@ public class UpdateLotStatus extends javax.swing.JFrame {
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
+        updateCurrentStatusLabel();
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
@@ -147,8 +159,64 @@ public class UpdateLotStatus extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        if (this.ep == null) {
+            javax.swing.JOptionPane.showMessageDialog(this, "Error: Properties not loaded.");
+            return;
+        }
+
+        String blockText = jComboBox1.getSelectedItem().toString().replace("Block ", "").trim();
+        String lotText = jComboBox2.getSelectedItem().toString().replace("Lot ", "").trim();
+        String newStatus = jComboBox3.getSelectedItem().toString();
+
+        int selectedBlock = Integer.parseInt(blockText);
+        int selectedLot = Integer.parseInt(lotText);
+
+        boolean found = false;
+
+        for (MyLib.Property p : this.ep.getProperties()) {
+            if (p.getBlockLoc() == selectedBlock && p.getLotLoc() == selectedLot) {
+                p.setStatus(newStatus);
+                found = true;
+                break;
+            }
+        }
+
+        if (found) {
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Successfully updated Block " + selectedBlock + " Lot " + selectedLot + " to " + newStatus);
+        } else {
+            javax.swing.JOptionPane.showMessageDialog(this, "Property not found!", "Error", javax.swing.JOptionPane.ERROR_MESSAGE);
+        }
+     
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+        updateCurrentStatusLabel();
+    }//GEN-LAST:event_jComboBox2ActionPerformed
+    
+    private void updateCurrentStatusLabel() {
+        if (this.ep == null) {
+            return;
+        }
+        try {
+            String blockText = jComboBox1.getSelectedItem().toString().replace("Block ", "").trim();
+            String lotText = jComboBox2.getSelectedItem().toString().replace("Lot ", "").trim();
+            int b = Integer.parseInt(blockText);
+            int l = Integer.parseInt(lotText);
+
+            
+            for (MyLib.Property p : this.ep.getProperties()) {
+                if (p.getBlockLoc() == b && p.getLotLoc() == l) {
+                    jLabel4.setText("Current Status: " + p.getStatus());
+                    return;
+                }
+            }
+            jLabel4.setText("Current Status: Not Found");
+        } catch (Exception e) {
+        }
+    }
+    
     /**
      * @param args the command line arguments
      */
@@ -171,7 +239,7 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new UpdateLotStatus().setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new UpdateLotStatus(MyLib.EstateProperties.getInstance()).setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -380,6 +380,10 @@ public class TransactionWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select an action (Buy or Reserve)", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
+        //or My.LibReserve 
+        Reserve newRecord = new Reserve(loggedIn, chosenBlkLot);
+        
+        Login.history.add(newRecord);
         
         displayChosenProperty();
         
@@ -387,6 +391,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         
         PropertiesWindow pw = new PropertiesWindow(loggedIn);
         pw.setVisible(true);
+        new MyTransaction().setVisible(true);
         dispose();
         
     }//GEN-LAST:event_confirmTransactBtnActionPerformed

@@ -8,6 +8,7 @@ import MyLib.Client;
 import MyLib.Agent;
 import MyLib.Admin;
 import MyLib.SystemUser;
+import MyLib.Reserve;
 import java.util.ArrayList;
 import java.awt.Image;
 import javax.swing.ImageIcon;
@@ -21,7 +22,11 @@ public class Login extends javax.swing.JFrame {
     
     public static ArrayList<Client> clients = new ArrayList<>();
     public static ArrayList<Agent> agents = new ArrayList<>();
+
     public static ArrayList<Admin> admins = new ArrayList<>();
+
+    public static ArrayList<Reserve> history = new ArrayList<>();
+    
     private Client loggedIn;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
