@@ -9,7 +9,6 @@ package MyLib;
  * @author pcmya
  */
 public abstract class Transaction {
-    private double payment;
     private Client client;
     private Property property;
 
