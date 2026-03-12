@@ -11,8 +11,8 @@ package MyLib;
 public class Agent extends SystemUser {
     private int agentID;
 
-    public Agent(int agentID, String password) {
-        super(password);
+    public Agent(int agentID, String name, String password) {
+        super(name, password);
         this.agentID = agentID;
     }
 
@@ -23,13 +23,5 @@ public class Agent extends SystemUser {
     
     public int getAgentID(){
         return agentID;
-    }
-    
-    public String getName(){
-        return name;
-    }
-    
-    public void setName(String name) {
-        this.name = name;
     }
 }

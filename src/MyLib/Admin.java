@@ -11,8 +11,8 @@ package MyLib;
 public class Admin extends SystemUser {
     private int adminID;
     
-    public Admin(int adminID, String password) {
-        super(password);
+    public Admin(int adminID, String name, String password) {
+        super(name, password);
         this.adminID = adminID;
     }
     

@@ -9,14 +9,12 @@ package MyLib;
  * @author Christian Aranza
  */
 public class Client extends SystemUser {
-    private String name;
     private String email;
     private String username;
     private String celNum;
 
     public Client(String name, String email, String username, String password, String celNum) {
-        super(password);
-        this.name = name;
+        super(name, password);
         this.email = email;
         this.username = username;
         this.celNum = celNum;
@@ -26,11 +24,7 @@ public class Client extends SystemUser {
         return this.username.equals(username) &&
                 this.getPassword().equals(password);
     }
-    
-    public String getName() {
-        return name;
-    }
-    
+        
     public String getEmail() {
         return email;
     }

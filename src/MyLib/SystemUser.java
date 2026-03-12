@@ -9,12 +9,22 @@ package MyLib;
  * @author Christian Aranza
  */
 public abstract class SystemUser {
+    private String name;
     private String password;
     
-    public SystemUser(String password) {
-        this.password = password;
+    public SystemUser(String name, String password) {
+        this.name = name;
+        this.password = password;  
     }
-
+    
+    public String getName(){
+    return name;
+    }
+    
+    public void setName(String name) {
+        this.name = name;
+    }
+    
     public String getPassword() {
         return password;
     }

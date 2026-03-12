@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
     
     public static ArrayList<Client> clients = new ArrayList<>();
     public static ArrayList<Agent> agents = new ArrayList<>();
+    public static ArrayList<Admin> admins = new ArrayList<>();
     private Client loggedIn;
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(Login.class.getName());
@@ -36,6 +37,8 @@ public class Login extends javax.swing.JFrame {
     
     static {
     clients.add(new Client("User","sampleuser@gmail.com","sample_user","password1","0916123456"));
+    agents.add(new Agent(101010, "Agent", "password2"));
+    admins.add(new Admin(202020, "Admin", "password3"));
     }
 
     /**
@@ -74,6 +77,7 @@ public class Login extends javax.swing.JFrame {
         passwordField.addActionListener(this::passwordFieldActionPerformed);
 
         userType.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Client", "Agent", "Admin" }));
+        userType.addActionListener(this::userTypeActionPerformed);
 
         login.setText("Log in");
         login.addActionListener(this::loginActionPerformed);
@@ -144,7 +148,7 @@ public class Login extends javax.swing.JFrame {
     
     if (role.equals("Client")) {
         
-        for (Client c : clients) {  // ← this creates "c"!
+        for (Client c : clients) {
             if (c.login(username, password)) {
                 JOptionPane.showMessageDialog(this, "Welcome, " + c.getName() + "!");
                 new PropertiesWindow(c).setVisible(true);
@@ -153,6 +157,38 @@ public class Login extends javax.swing.JFrame {
             }
         }
         JOptionPane.showMessageDialog(this, "Invalid username or password!");
+    } else if (role.equals("Agent")) {
+    try {
+        int agentID = Integer.parseInt(usernameField.getText());
+       
+        for (Agent a : agents) {
+            if (a.login(agentID, password)) {
+                JOptionPane.showMessageDialog(this, "Welcome, " + a.getName() + "!");
+                //new (a).setVisible(true);
+                this.dispose();
+                return;
+            }
+        }
+        JOptionPane.showMessageDialog(this, "Invalid ID or password!");
+        
+    } catch (NumberFormatException e) {
+        JOptionPane.showMessageDialog(this, "Agent ID must be a number!");
+    } //catch
+    }  else if (role.equals("Admin")) {
+        try {
+            int adminID = Integer.parseInt(username); // ← parse it first!
+            for (Admin ad : admins) {
+                if (ad.login(adminID, password)) {
+                    JOptionPane.showMessageDialog(this, "Welcome, " + ad.getName() + "!");
+                    //new AdminLanding(ad).setVisible(true);
+                    this.dispose();
+                    return;
+                }
+            }
+            JOptionPane.showMessageDialog(this, "Invalid ID or password!");
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Admin ID must be a number!");
+        }
     }
     }//GEN-LAST:event_loginActionPerformed
 
@@ -160,6 +196,21 @@ public class Login extends javax.swing.JFrame {
         new Register().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_toRegisterActionPerformed
+
+    private void userTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTypeActionPerformed
+        String selected = (String) userType.getSelectedItem();
+    
+        if (selected.equals("Client")) {
+            usernameField.setText("Username");
+            toRegister.setVisible(true);
+        } else if (selected.equals("Agent")) {
+            usernameField.setText("Agent ID");
+            toRegister.setVisible(false);
+        } else if (selected.equals("Admin")) {
+            usernameField.setText("Admin ID");
+            toRegister.setVisible(false);
+        }
+    }//GEN-LAST:event_userTypeActionPerformed
 
     /**
      * @param args the command line arguments
