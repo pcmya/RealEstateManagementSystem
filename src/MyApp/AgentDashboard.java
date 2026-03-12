@@ -58,16 +58,13 @@ public class AgentDashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnReset = new java.awt.Button();
         jLabel5 = new javax.swing.JLabel();
-        chosenBlockInput = new javax.swing.JTextField();
-        chosenLotInput = new javax.swing.JTextField();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         greetingLabel = new javax.swing.JLabel();
         navbar = new javax.swing.JPanel();
         dashboardButton = new javax.swing.JButton();
         sitemapButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         logoimage = new javax.swing.JLabel();
+        btnUpdateLotStatus = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -104,14 +101,6 @@ public class AgentDashboard extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel5.setText("Dashboard");
-
-        chosenBlockInput.addActionListener(this::chosenBlockInputActionPerformed);
-
-        chosenLotInput.addActionListener(this::chosenLotInputActionPerformed);
-
-        jLabel6.setText("Enter Desired Block:");
-
-        jLabel7.setText("Enter Desired Lot:");
 
         greetingLabel.setFont(new java.awt.Font("Segoe UI", 0, 24)); // NOI18N
         greetingLabel.setText("Welcome, ");
@@ -169,6 +158,9 @@ public class AgentDashboard extends javax.swing.JFrame {
                 .addGap(128, 128, 128))
         );
 
+        btnUpdateLotStatus.setText("Update Lot Status");
+        btnUpdateLotStatus.addActionListener(this::btnUpdateLotStatusActionPerformed);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -177,11 +169,8 @@ public class AgentDashboard extends javax.swing.JFrame {
                 .addComponent(navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 114, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -196,7 +185,7 @@ public class AgentDashboard extends javax.swing.JFrame {
                                         .addComponent(jLabel2)
                                         .addGap(100, 100, 100)
                                         .addComponent(jLabel1)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(17, 17, 17)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
                                     .addComponent(inputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -205,17 +194,13 @@ public class AgentDashboard extends javax.swing.JFrame {
                                     .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel4)))
                             .addComponent(greetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(chosenBlockInput))
-                                .addGap(18, 18, 18)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel7)
-                                    .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(390, 390, 390))
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(43, 43, 43))))
+                        .addGap(43, 43, 43))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnUpdateLotStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addContainerGap())))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -242,17 +227,9 @@ public class AgentDashboard extends javax.swing.JFrame {
                     .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel6)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chosenBlockInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(0, 108, Short.MAX_VALUE))
+                .addGap(26, 26, 26)
+                .addComponent(btnUpdateLotStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 119, Short.MAX_VALUE))
             .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -321,14 +298,6 @@ public class AgentDashboard extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btnResetActionPerformed
 
-    private void chosenBlockInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chosenBlockInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chosenBlockInputActionPerformed
-
-    private void chosenLotInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chosenLotInputActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_chosenLotInputActionPerformed
-
     private void inputBlockActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_inputBlockActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_inputBlockActionPerformed
@@ -348,13 +317,20 @@ public class AgentDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_dashboardButtonActionPerformed
 
     private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
-        new SiteMap(loggedIn, ep).setVisible(true);
+        new SiteMap(null, ep).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_sitemapButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
         this.dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
+
+    private void btnUpdateLotStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateLotStatusActionPerformed
+
+
+        new UpdateLotStatus(ep).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_btnUpdateLotStatusActionPerformed
 
 
     private void loadProperties() {
@@ -421,8 +397,7 @@ public class AgentDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button btnReset;
     private java.awt.Button btnSearch;
-    private javax.swing.JTextField chosenBlockInput;
-    private javax.swing.JTextField chosenLotInput;
+    private javax.swing.JButton btnUpdateLotStatus;
     private javax.swing.JComboBox<String> cmbModel;
     private javax.swing.JButton dashboardButton;
     private javax.swing.JLabel greetingLabel;
@@ -434,8 +409,6 @@ public class AgentDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel logoimage;
