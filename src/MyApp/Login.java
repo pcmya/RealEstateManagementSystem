@@ -164,7 +164,7 @@ public class Login extends javax.swing.JFrame {
         for (Agent a : agents) {
             if (a.login(agentID, password)) {
                 JOptionPane.showMessageDialog(this, "Welcome, " + a.getName() + "!");
-                //new (a).setVisible(true);
+                new AgentDashboard(a).setVisible(true);
                 this.dispose();
                 return;
             }
@@ -180,7 +180,7 @@ public class Login extends javax.swing.JFrame {
             for (Admin ad : admins) {
                 if (ad.login(adminID, password)) {
                     JOptionPane.showMessageDialog(this, "Welcome, " + ad.getName() + "!");
-                    //new AdminLanding(ad).setVisible(true);
+                    //new AdminDashboard(ad).setVisible(true);
                     this.dispose();
                     return;
                 }

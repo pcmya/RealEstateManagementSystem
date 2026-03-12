@@ -6,7 +6,7 @@ package MyApp;
 
 import MyLib.EstateProperties;
 import MyLib.Property;
-import MyLib.Client;
+import MyLib.Agent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -20,7 +20,7 @@ public class AgentDashboard extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AgentDashboard.class.getName());
     
-    private Client loggedIn;
+    private Agent loggedIn;
     
     /**
      * Creates new form Properties
@@ -28,12 +28,12 @@ public class AgentDashboard extends javax.swing.JFrame {
     
     EstateProperties ep;
 
-    public AgentDashboard(Client client) {  
+    public AgentDashboard(Agent agent) {  
         initComponents();
         ep = EstateProperties.getInstance();
         loadProperties();
 
-        this.loggedIn = client;  
+        this.loggedIn = agent;  
         greetingLabel.setText("Welcome, " + loggedIn.getName() + "!");
     }
 
@@ -59,7 +59,6 @@ public class AgentDashboard extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         btnReset = new java.awt.Button();
         jLabel5 = new javax.swing.JLabel();
-        btnProceedTransact = new java.awt.Button();
         chosenBlockInput = new javax.swing.JTextField();
         chosenLotInput = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
@@ -106,9 +105,6 @@ public class AgentDashboard extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Segoe UI", 0, 48)); // NOI18N
         jLabel5.setText("Dashboard");
-
-        btnProceedTransact.setLabel("PROCEED TRANSACTION");
-        btnProceedTransact.addActionListener(this::btnProceedTransactActionPerformed);
 
         chosenBlockInput.addActionListener(this::chosenBlockInputActionPerformed);
 
@@ -211,16 +207,13 @@ public class AgentDashboard extends javax.swing.JFrame {
                                     .addComponent(jLabel4)))
                             .addComponent(greetingLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(chosenBlockInput))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(chosenBlockInput))
-                                        .addGap(18, 18, 18)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel7)
-                                            .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                    .addComponent(btnProceedTransact, javax.swing.GroupLayout.PREFERRED_SIZE, 228, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel7)
+                                    .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 105, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addGap(390, 390, 390))
                             .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(43, 43, 43))))
@@ -260,9 +253,7 @@ public class AgentDashboard extends javax.swing.JFrame {
                         .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(chosenLotInput, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(19, 19, 19)
-                .addComponent(btnProceedTransact, javax.swing.GroupLayout.PREFERRED_SIZE, 53, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 36, Short.MAX_VALUE))
+                .addGap(0, 108, Short.MAX_VALUE))
             .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -330,66 +321,6 @@ public class AgentDashboard extends javax.swing.JFrame {
             loadProperties();
         }
     }//GEN-LAST:event_btnResetActionPerformed
-
-    private void btnProceedTransactActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProceedTransactActionPerformed
-        // TODO add your handling code here:
-        Integer blockNum = null;
-        Integer lotNum = null;
-        
-        String chosenBlockText = chosenBlockInput.getText().trim();
-        String chosenLotText = chosenLotInput.getText().trim();
-        
-        if (!chosenBlockText.isEmpty()) {
-            try {
-                blockNum = Integer.parseInt(chosenBlockText);
-            } catch(NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Invalid Block Number", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Enter a Block Number", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        if (!chosenLotText.isEmpty()) {
-            try {
-                lotNum = Integer.parseInt(chosenLotText);
-            } catch(NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Invalid Lot Number", "Error", JOptionPane.ERROR_MESSAGE);
-                return;
-            }
-        }
-        else {
-            JOptionPane.showMessageDialog(this, "Enter a Lot Number", "Error", JOptionPane.ERROR_MESSAGE);
-            return; 
-        }
-        
-        // Find the actual Property from ALL properties
-        Property chosenProperty = null;
-        for (Property p : ep.getProperties()) {
-            if (p.getBlockLoc() == blockNum && p.getLotLoc() == lotNum) {
-                chosenProperty = p;
-                break;
-            }
-        }
-        
-        // Check if property exists
-        if (chosenProperty == null) {
-            JOptionPane.showMessageDialog(this, "Property not found with Block " + blockNum + " and Lot " + lotNum, "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        // Check if property is available
-        if (!chosenProperty.getStatus().equals("Available")) {
-            JOptionPane.showMessageDialog(this, "This property is not available for transaction", "Error", JOptionPane.ERROR_MESSAGE);
-            return;
-        }
-        
-        TransactionWindow transactWindow = new TransactionWindow(chosenProperty, loggedIn, EstateProperties.getInstance());
-        transactWindow.setVisible(true);
-        dispose();
-    }//GEN-LAST:event_btnProceedTransactActionPerformed
 
     private void chosenBlockInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_chosenBlockInputActionPerformed
         // TODO add your handling code here:
@@ -492,7 +423,6 @@ public class AgentDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button btnProceedTransact;
     private java.awt.Button btnReset;
     private java.awt.Button btnSearch;
     private javax.swing.JTextField chosenBlockInput;
