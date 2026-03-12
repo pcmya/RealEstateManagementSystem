@@ -3,7 +3,18 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package MyApp;
-
+import MyLib.Client;
+import MyLib.EstateProperties;
+import MyLib.Property;
+import MyLib.Reserve;
+import MyLib.Transaction;
+import MyApp.Login;
+import javax.swing.JOptionPane;
+import java.util.ArrayList;
+import java.awt.FlowLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import javax.swing.*;
 /**
  *
  * @author emarie
@@ -12,11 +23,15 @@ public class MyTransaction extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(MyTransaction.class.getName());
 
+    private Client loggedIn;
+    private Property chosenBlkLot;
     /**
      * Creates new form MyTransaction
      */
     public MyTransaction() {
         initComponents();
+        transacPanel.setLayout(new java.awt.FlowLayout(java.awt.FlowLayout.LEADING, 20, 20));
+        displayPastTransactions(MyApp.Login.history);
     }
 
     /**
@@ -53,10 +68,10 @@ public class MyTransaction extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(178, 178, 178)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 384, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
-                .addContainerGap(202, Short.MAX_VALUE))
+                .addContainerGap(66, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -65,14 +80,55 @@ public class MyTransaction extends javax.swing.JFrame {
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 359, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(27, 27, 27))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(49, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    public void displayPastTransactions(ArrayList<MyLib.Reserve> history) {
+        transacPanel.removeAll();
 
+        if (history == null || history.isEmpty()) {
+            // Display empty state message
+            JLabel emptyMsg = new JLabel("You haven't made any transactions yet.");
+            emptyMsg.setFont(new java.awt.Font("Segoe UI", 0, 18));
+            emptyMsg.setForeground(Color.GRAY);
+            transacPanel.add(emptyMsg);
+        } 
+        else {
+            for (MyLib.Reserve record : history) {
+                // Create a "Receipt Card" for each transaction
+                JPanel card = new JPanel();
+                
+                card.setPreferredSize(new Dimension(600, 500));
+                card.setBackground(Color.WHITE);
+                card.setBorder(BorderFactory.createLineBorder(new Color(230, 230, 230)));
+                card.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
+
+                // Determine if it was a Buy or Reserve based on property status
+                String status = record.getProperty().getStatus();
+                String type = status.equalsIgnoreCase("Sold") ? "PURCHASE" : "RESERVATION";
+                
+                String propertyInfo = "Property: Block " + record.getProperty().getBlockLoc() + " Lot " + record.getProperty().getLotLoc();
+                // Add details to the card
+                
+                card.add(new JLabel("  Type: " + type));
+                card.add(new JLabel(propertyInfo));
+                card.add(new JLabel("  Status: " + status));
+                
+                transacPanel.add(card);
+                
+            }
+            int height = history.size()*300;
+            transacPanel.setPreferredSize(new Dimension(384, height));
+        }
+
+        // Refresh the panel
+        transacPanel.revalidate();
+        transacPanel.repaint();
+    }
     /**
      * @param args the command line arguments
      */

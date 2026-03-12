@@ -18,6 +18,10 @@ public abstract class Transaction {
         this.property = property;
     }
     
+    public Property getProperty(){
+        return this.property;
+    }
+    
     public abstract void computePayment();
     
 }
