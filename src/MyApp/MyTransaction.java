@@ -99,7 +99,6 @@ public class MyTransaction extends javax.swing.JFrame {
         } 
         else {
             for (MyLib.Reserve record : history) {
-                // Create a "Receipt Card" for each transaction
                 JPanel card = new JPanel();
                 
                 card.setPreferredSize(new Dimension(600, 500));
@@ -107,12 +106,10 @@ public class MyTransaction extends javax.swing.JFrame {
                 card.setBorder(BorderFactory.createLineBorder(new Color(230, 230, 230)));
                 card.setLayout(new java.awt.GridLayout(0, 1, 5, 5));
 
-                // Determine if it was a Buy or Reserve based on property status
                 String status = record.getProperty().getStatus();
                 String type = status.equalsIgnoreCase("Sold") ? "PURCHASE" : "RESERVATION";
                 
                 String propertyInfo = "Property: Block " + record.getProperty().getBlockLoc() + " Lot " + record.getProperty().getLotLoc();
-                // Add details to the card
                 
                 card.add(new JLabel("  Type: " + type));
                 card.add(new JLabel(propertyInfo));
@@ -125,7 +122,6 @@ public class MyTransaction extends javax.swing.JFrame {
             transacPanel.setPreferredSize(new Dimension(384, height));
         }
 
-        // Refresh the panel
         transacPanel.revalidate();
         transacPanel.repaint();
     }

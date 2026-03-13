@@ -397,8 +397,6 @@ public class TransactionWindow extends javax.swing.JFrame {
     private void confirmTransactBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmTransactBtnActionPerformed
         // TODO add your handling code here:
         String buyReserveSelect = comboBuyReserve.getSelectedItem().toString();
-        //String payMethodSelect = comboPayMethod.getSelectedItem().toString();
-        //to be continued
         if (buyReserveSelect.equals("Reserve Lot")) {
             chosenBlkLot.setStatus("Reserved");
         }
@@ -409,7 +407,6 @@ public class TransactionWindow extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Please select an action (Buy or Reserve)", "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
-        //or My.LibReserve 
         Reserve newRecord = new Reserve(loggedIn, chosenBlkLot);
         
         Login.history.add(newRecord);

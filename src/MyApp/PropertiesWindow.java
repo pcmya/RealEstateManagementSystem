@@ -422,6 +422,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_sitemapButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
