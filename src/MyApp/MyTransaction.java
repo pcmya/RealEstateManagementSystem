@@ -4,14 +4,8 @@
  */
 package MyApp;
 import MyLib.Client;
-import MyLib.EstateProperties;
 import MyLib.Property;
-import MyLib.Reserve;
-import MyLib.Transaction;
-import MyApp.Login;
-import javax.swing.JOptionPane;
 import java.util.ArrayList;
-import java.awt.FlowLayout;
 import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.*;

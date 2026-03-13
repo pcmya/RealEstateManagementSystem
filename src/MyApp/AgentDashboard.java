@@ -7,7 +7,6 @@ package MyApp;
 import MyLib.EstateProperties;
 import MyLib.Property;
 import MyLib.Agent;
-import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -317,18 +316,17 @@ public class AgentDashboard extends javax.swing.JFrame {
     }//GEN-LAST:event_dashboardButtonActionPerformed
 
     private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
-        new SiteMap(null, ep).setVisible(true);
+        new AgentSiteMap(loggedIn, ep).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_sitemapButtonActionPerformed
 
     private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        new Login().setVisible(true);
         this.dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void btnUpdateLotStatusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUpdateLotStatusActionPerformed
-
-
-        new UpdateLotStatus(ep).setVisible(true);
+        new UpdateLotStatus(loggedIn, ep).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnUpdateLotStatusActionPerformed
 

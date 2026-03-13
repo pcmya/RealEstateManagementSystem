@@ -6,12 +6,10 @@ package MyApp;
 import MyLib.PagIBIG;
 import MyLib.Cash;
 import MyLib.BankFinancing;
-
 import MyLib.Client;
 import MyLib.EstateProperties;
 import MyLib.Property;
 import MyLib.Reserve;
-import MyLib.Transaction;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -415,7 +413,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         
         JOptionPane.showMessageDialog(this, "Successful Transaction!", "Thank you", JOptionPane.PLAIN_MESSAGE);
         
-        PropertiesWindow pw = new PropertiesWindow(loggedIn);
+        ClientDashboard pw = new ClientDashboard(loggedIn);
         pw.setVisible(true);
         new MyTransaction().setVisible(true);
         dispose();
@@ -529,8 +527,8 @@ public class TransactionWindow extends javax.swing.JFrame {
         }
         //</editor-fold>
 
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new TransactionWindow(blockNum, loggedIn).setVisible(true));
+        /* Create and display the form
+        java.awt.EventQueue.invokeLater(() -> new TransactionWindow(blockNum, loggedIn).setVisible(true)); */
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

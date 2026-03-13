@@ -156,7 +156,7 @@ public class Login extends javax.swing.JFrame {
         for (Client c : clients) {
             if (c.login(username, password)) {
                 JOptionPane.showMessageDialog(this, "Welcome, " + c.getName() + "!");
-                new PropertiesWindow(c).setVisible(true);
+                new ClientDashboard(c).setVisible(true);
                 this.dispose();
                 return;
             }

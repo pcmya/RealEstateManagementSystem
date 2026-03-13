@@ -15,9 +15,9 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Christian Aranza
  */
-public class PropertiesWindow extends javax.swing.JFrame {
+public class ClientDashboard extends javax.swing.JFrame {
     
-    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(PropertiesWindow.class.getName());
+    private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(ClientDashboard.class.getName());
     
     private Client loggedIn;
     
@@ -27,7 +27,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
     
     EstateProperties ep;
 
-    public PropertiesWindow(Client client) {  
+    public ClientDashboard(Client client) {  
         initComponents();
         ep = EstateProperties.getInstance();
         loadProperties();
@@ -35,7 +35,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
         this.loggedIn = client;  
         greetingLabel.setText("Welcome, " + loggedIn.getName() + "!");
     }
-
+   
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -164,7 +164,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
             .addGroup(navbarLayout.createSequentialGroup()
                 .addGap(36, 36, 36)
                 .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
+                .addGap(105, 105, 105)
                 .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -412,12 +412,12 @@ public class PropertiesWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_cmbModelActionPerformed
 
     private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
-        new PropertiesWindow(loggedIn).setVisible(true);
+        new ClientDashboard(loggedIn).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_dashboardButtonActionPerformed
 
     private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
-        new SiteMap(loggedIn, ep).setVisible(true);
+        new ClientSiteMap(loggedIn, ep).setVisible(true);
         this.dispose();
     }//GEN-LAST:event_sitemapButtonActionPerformed
 
@@ -488,7 +488,7 @@ public class PropertiesWindow extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form 
-        java.awt.EventQueue.invokeLater(() -> new PropertiesWindow().setVisible(true));*/
+        java.awt.EventQueue.invokeLater(() -> new ClientDashboard().setVisible(true));*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

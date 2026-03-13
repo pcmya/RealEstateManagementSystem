@@ -4,8 +4,8 @@
  */
 package MyApp;
 
+import MyLib.Agent;
 import MyLib.EstateProperties;
-import MyLib.Property;
 /**
  *
  * @author Fidel
@@ -16,10 +16,12 @@ public class UpdateLotStatus extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(UpdateLotStatus.class.getName());
 
+    private Agent loggedIn;
     /**
      * Creates new form UpdateLotStatus
      */
-    public UpdateLotStatus(MyLib.EstateProperties ep) {
+    public UpdateLotStatus(Agent agent, EstateProperties ep) {
+        this.loggedIn = agent;
         this.ep = ep;
         initComponents();
         jTextField1.setText("");
@@ -50,6 +52,11 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        navbar = new javax.swing.JPanel();
+        dashboardButton = new javax.swing.JButton();
+        sitemapButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        logoimage = new javax.swing.JLabel();
 
         jLabel6.setText("jLabel6");
 
@@ -87,35 +94,86 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         jLabel7.setText("Notes");
 
         jTextField1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
-        jTextField1.setText("jTextField1");
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
 
         jButton1.setFont(new java.awt.Font("Helvetica Neue", 0, 18)); // NOI18N
         jButton1.setText("Update Status");
         jButton1.addActionListener(this::jButton1ActionPerformed);
 
+        navbar.setBackground(new java.awt.Color(153, 153, 153));
+
+        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
+        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        dashboardButton.setText("Dashboard");
+        dashboardButton.setBorder(null);
+        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
+
+        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
+        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        sitemapButton.setText("Site map");
+        sitemapButton.setBorder(null);
+        sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
+
+        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
+        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        logoutButton.setText("Log out");
+        logoutButton.setBorder(null);
+        logoutButton.addActionListener(this::logoutButtonActionPerformed);
+
+        logoimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyApp/images/logoimgsmall.png"))); // NOI18N
+        logoimage.setText("jLabel2");
+
+        javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
+        navbar.setLayout(navbarLayout);
+        navbarLayout.setHorizontalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(29, Short.MAX_VALUE))
+        );
+        navbarLayout.setVerticalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(295, 295, 295)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel7)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel2)
-                    .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4)
-                    .addComponent(jComboBox3, 0, 573, Short.MAX_VALUE)
-                    .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jTextField1))
-                .addContainerGap(157, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton1)
-                .addGap(369, 369, 369))
+                .addComponent(navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(114, 114, 114)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jLabel7)
+                        .addComponent(jLabel5)
+                        .addComponent(jLabel1)
+                        .addComponent(jLabel2)
+                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel3)
+                        .addComponent(jLabel4)
+                        .addComponent(jComboBox3, 0, 573, Short.MAX_VALUE)
+                        .addComponent(jComboBox2, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jTextField1))
+                    .addComponent(jButton1))
+                .addContainerGap(59, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,13 +194,14 @@ public class UpdateLotStatus extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 37, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(73, 73, 73)
+                .addGap(43, 43, 43)
                 .addComponent(jButton1)
-                .addContainerGap(85, Short.MAX_VALUE))
+                .addContainerGap(98, Short.MAX_VALUE))
+            .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         setBounds(0, 0, 1025, 787);
@@ -195,6 +254,21 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         // TODO add your handling code here:
         updateCurrentStatusLabel();
     }//GEN-LAST:event_jComboBox2ActionPerformed
+
+    private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
+        new AgentDashboard(loggedIn).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_dashboardButtonActionPerformed
+
+    private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
+        new AgentSiteMap(loggedIn, ep).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_sitemapButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
     
     private void updateCurrentStatusLabel() {
         if (this.ep == null) {
@@ -248,10 +322,11 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(() -> new UpdateLotStatus(MyLib.EstateProperties.getInstance()).setVisible(true));
+        java.awt.EventQueue.invokeLater(() -> new UpdateLotStatus().setVisible(true));
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton dashboardButton;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -264,5 +339,9 @@ public class UpdateLotStatus extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JLabel logoimage;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JPanel navbar;
+    private javax.swing.JButton sitemapButton;
     // End of variables declaration//GEN-END:variables
 }
