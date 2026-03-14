@@ -49,7 +49,7 @@ public class AgentDashboard extends javax.swing.JFrame {
         btnSearch = new java.awt.Button();
         inputSize = new javax.swing.JTextField();
         inputBlock = new javax.swing.JTextField();
-        inputPrice = new javax.swing.JTextField();
+        inputLot = new javax.swing.JTextField();
         cmbModel = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -91,7 +91,7 @@ public class AgentDashboard extends javax.swing.JFrame {
 
         jLabel2.setText("Enter Block:");
 
-        jLabel3.setText("Enter Your Budget:");
+        jLabel3.setText("Enter Lot");
 
         jLabel4.setText("Select Model:");
 
@@ -176,18 +176,18 @@ public class AgentDashboard extends javax.swing.JFrame {
                                 .addComponent(btnReset, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(inputBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(inputSize, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addGap(100, 100, 100)
-                                        .addComponent(jLabel1)))
-                                .addGap(17, 17, 17)
+                                    .addComponent(inputBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel2))
+                                .addGap(18, 18, 18)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel3)
-                                    .addComponent(inputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(inputLot, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(10, 10, 10)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(1, 1, 1)
+                                        .addComponent(inputSize, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel1))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -205,21 +205,25 @@ public class AgentDashboard extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(35, 35, 35)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(greetingLabel)
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(inputBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(inputSize, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(greetingLabel)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(inputBlock, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(cmbModel, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(inputSize, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(inputLot, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(btnSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -228,7 +232,7 @@ public class AgentDashboard extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
                 .addComponent(btnUpdateLotStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 119, Short.MAX_VALUE))
+                .addGap(62, 125, Short.MAX_VALUE))
             .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
@@ -239,7 +243,7 @@ public class AgentDashboard extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         Integer blockLoc = null;
-        Double price = null;
+        Integer lotLoc = null;
         Double size = null;
         String model = null;
 
@@ -253,12 +257,12 @@ public class AgentDashboard extends javax.swing.JFrame {
             }
         }
 
-        String priceText = inputPrice.getText().trim();
-        if (!priceText.isEmpty()) {
+        String lotText = inputLot.getText().trim();
+        if (!lotText.isEmpty()) {
             try {
-                price = Double.parseDouble(priceText);
+                lotLoc = Integer.parseInt(lotText);
             } catch (NumberFormatException e) {
-                JOptionPane.showMessageDialog(this, "Invalid Price Format", "Error", JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Invalid Lot Number", "Error", JOptionPane.ERROR_MESSAGE);
                 return;
             }
         }
@@ -278,7 +282,7 @@ public class AgentDashboard extends javax.swing.JFrame {
             model = selectedModel;
         }
 
-        ArrayList<Property> results = ep.searchProperties(blockLoc, price, size, model);
+        ArrayList<Property> results = ep.searchProperties(blockLoc, lotLoc, null, size, model);
 
         updateTable(results);
     }//GEN-LAST:event_btnSearchActionPerformed
@@ -288,7 +292,7 @@ public class AgentDashboard extends javax.swing.JFrame {
         
         if (evt.getSource() == btnReset) {
             inputBlock.setText("");
-            inputPrice.setText("");
+            inputLot.setText("");
             inputSize.setText("");
             
             cmbModel.setSelectedIndex(0);
@@ -346,6 +350,7 @@ public class AgentDashboard extends javax.swing.JFrame {
                     p.getStatus()
                 };
                 model.addRow(row);
+                //updateTable(ep.getProperties());
             }
         }
     }
@@ -400,7 +405,7 @@ public class AgentDashboard extends javax.swing.JFrame {
     private javax.swing.JButton dashboardButton;
     private javax.swing.JLabel greetingLabel;
     private javax.swing.JTextField inputBlock;
-    private javax.swing.JTextField inputPrice;
+    private javax.swing.JTextField inputLot;
     private javax.swing.JTextField inputSize;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

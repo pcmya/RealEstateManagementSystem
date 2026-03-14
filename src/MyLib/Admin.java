@@ -12,6 +12,7 @@ import java.util.ArrayList;
  */
 public class Admin extends SystemUser {
     private int adminID;
+    private EstateProperties properties;
     private ArrayList<Agent> agents = new ArrayList<>();
     
     public Admin(int adminID, String name, String password) {
@@ -24,21 +25,14 @@ public class Admin extends SystemUser {
                 this.getPassword().equals(password);
     }
     
-    public int getAdmin() {
+    public int getAdminID() {
         return adminID;
     }
-    
-    public void setAdminID(int adminID) {
-        this.adminID = adminID;
+   
+    public void addAgent(int agentID, String name, String password) {
+        agents.add(new Agent(agentID, name, password));
     }
-    
-    public boolean addAgent(Agent agent) {
-        if (agentExists(agent.getAgentID())) {
-            return false;
-        }
-        return agents.add(agent);
-    }
-    
+
     public boolean removeAgent(int agentID) {
         for (Agent agent : agents) {
             if (agent.getAgentID() == agentID) {
@@ -46,10 +40,6 @@ public class Admin extends SystemUser {
             }
         }
         return false;
-    }
-    
-    public boolean removeAgent(Agent agent) {
-        return agents.remove(agent);
     }
     
     public boolean agentExists(int agentID) {
@@ -60,25 +50,12 @@ public class Admin extends SystemUser {
         return false;
     }
     
-    public Agent findAgent(int agentID) {
-        for (Agent agent : agents) {
-            if (agent.getAgentID() == agentID) {
-                return agent;
-            } 
-        }
-        return null;
-    }
-    
     public ArrayList<Agent> getAgents() {
         return agents;
     }
 
     public int getAgentCount() {
         return agents.size();
-    }
-    
-    public void clearAgents() {
-        agents.clear();
     }
 
     public boolean updateAgent(int agentID, String newName, String newPassword) {

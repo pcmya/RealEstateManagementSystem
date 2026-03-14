@@ -62,10 +62,11 @@ public class EstateProperties {
         return properties;
     }
     
-    public ArrayList<Property> searchProperties(Integer blockLoc, Double price, Double size, String model) {
+    public ArrayList<Property> searchProperties(Integer blockLoc, Integer lotLoc, Double price, Double size, String model) {
         ArrayList<Property> result = new ArrayList<>();
         for (Property p : properties) {
             if ((blockLoc == null || p.getBlockLoc() == blockLoc)
+                && (lotLoc == null || p.getLotLoc() == lotLoc)
                 && (size == null || p.getSize() == size)
                 && (price == null || p.getPrice() <= price)
                 && (model == null || p.getModel().getModelName().equals(model))) {

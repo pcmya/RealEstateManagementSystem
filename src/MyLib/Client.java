@@ -24,17 +24,4 @@ public class Client extends SystemUser {
         return this.username.equals(username) &&
                 this.getPassword().equals(password);
     }
-        
-    public String getEmail() {
-        return email;
-    }
-    
-    public String username() {
-        return username;
-    }
-    
-    public String getCelNum() {
-        return celNum;
-    }
-    
 }
