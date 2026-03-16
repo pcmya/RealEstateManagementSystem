@@ -9,12 +9,10 @@ package MyLib;
  * @author pcmya
  */
 public class Cash extends Transaction {
-    double totalContractPrice;
-    double reservationFee;
-    double discountRate;
-    double discountAmount;
-    double netTotalContractPrice;
-    double fullContractPrice;
+    private double discountRate = 0.10;
+    private double discountAmount;
+    private double netTotalContractPrice;
+    private double fullContractPrice;
     
     public Cash (Client client, Property property){
         super(client, property);
@@ -22,50 +20,24 @@ public class Cash extends Transaction {
     
     public void computePayment(String modelName){
         if (modelName.equals("Adelle")) {
-            totalContractPrice = 5436700.00;
-            reservationFee = 20000.00;
-            discountRate = 0.10;
-            discountAmount = totalContractPrice * discountRate;
-            netTotalContractPrice = totalContractPrice - discountAmount;
-            fullContractPrice = netTotalContractPrice - reservationFee;
-
+            super.setTotalContractPrice(5436700.00);
+            super.setReservationFee(20000.00);
         }
         if (modelName.equals("Alice")) {
-            totalContractPrice = 2783000.00;
-            reservationFee = 15000.00;
-            discountRate = 0.10;
-            discountAmount = totalContractPrice * discountRate;
-            netTotalContractPrice = totalContractPrice - discountAmount;
-            fullContractPrice = netTotalContractPrice - reservationFee;
+            super.setTotalContractPrice(2783000.00);
+            super.setReservationFee(15000.00);
         }
         if (modelName.equals("Thea")) {
-            totalContractPrice = 3915400.00;
-            reservationFee = 15000.00;
-            discountRate = 0.10;
-            discountAmount = totalContractPrice * discountRate;
-            netTotalContractPrice = totalContractPrice - discountAmount;
-            fullContractPrice = netTotalContractPrice - reservationFee;     
+            super.setTotalContractPrice(3915400.00);
+            super.setReservationFee(15000.00);
         }
         if (modelName.equals("Anica")) {
-            totalContractPrice = 2441800.00;
-            reservationFee = 10000;
-            discountRate = 0.10;
-            discountAmount = totalContractPrice * discountRate;
-            netTotalContractPrice = totalContractPrice - discountAmount;
-            fullContractPrice = netTotalContractPrice - reservationFee;
+            super.setTotalContractPrice(2441800.00);
+            super.setReservationFee(10000);
         }
-    }
-
-    public double getTotalContractPrice() {
-        return totalContractPrice;
-    }
-
-    public double getReservationFee() {
-        return reservationFee;
-    }
-
-    public double getDiscountRate() {
-        return discountRate;
+        discountAmount = super.getTotalContractPrice() * discountRate;
+        netTotalContractPrice = super.getTotalContractPrice()-  discountAmount;
+        fullContractPrice = netTotalContractPrice - super.getReservationFee();
     }
 
     public double getDiscountAmount() {

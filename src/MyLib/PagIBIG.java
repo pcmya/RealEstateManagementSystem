@@ -9,14 +9,8 @@ package MyLib;
  * @author pcmya
  */
 public class PagIBIG extends Transaction {
-
-    private double tcp = 0.00;
-    private double requiredDP = 0.0;
-    private double reservationFee = 15000.00;
-    private int dpTerm = 24;
-    private double netDP;
+    private double requiredDP;
     private double monthlyEquity;
-    private double loanableAmount;
     
     public PagIBIG (Client client, Property property){
         super (client, property);
@@ -24,53 +18,34 @@ public class PagIBIG extends Transaction {
     
     public void computePayment(String modelName){
         if (modelName.equals("Adelle")) {
-            tcp = 4040600.00;        
+            super.setTotalContractPrice(4040600.00);
             requiredDP = 950000.00; 
         }
         if (modelName.equals("Alice")) {
-            tcp = 2833600.00;
+            super.setTotalContractPrice(2833600.00);
             requiredDP = 822070.00;
         }
         if (modelName.equals("Thea")) {
-            tcp = 3905500.00;        
+            super.setTotalContractPrice(3905500.00);        
             requiredDP = 600000.00;  
 
         } else if (modelName.equals("Anica")) {
-            tcp = 3153400.00;       
+            super.setTotalContractPrice(3153400.00);
             requiredDP = 450000.00;
         }
-        
-        netDP = requiredDP - reservationFee;
-        monthlyEquity = netDP / dpTerm;
-        loanableAmount = tcp - requiredDP;
+        super.setMonths(24);
+        super.setReservationFee(15000.00);
+        super.setNetDP(requiredDP - super.getReservationFee());
+        monthlyEquity = super.getNetDP() / super.getMonths();
+        super.setLoanableAmount(super.getTotalContractPrice() - requiredDP);
     }
-
-    public double getTcp() {
-        return tcp;
-    }
-
+    
     public double getRequiredDP() {
         return requiredDP;
     }
 
-    public double getReservationFee() {
-        return reservationFee;
-    }
-
-    public int getDpTerm() {
-        return dpTerm;
-    }
-
-    public double getNetDP() {
-        return netDP;
-    }
-
     public double getMonthlyEquity() {
         return monthlyEquity;
-    }
-
-    public double getLoanableAmount() {
-        return loanableAmount;
     }
 
     @Override
