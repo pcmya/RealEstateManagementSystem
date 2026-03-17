@@ -31,6 +31,84 @@ public class Register extends javax.swing.JFrame {
         Image scaled = raw.getImage().getScaledInstance(350, 200, Image.SCALE_SMOOTH);
         logoimage.setIcon(new ImageIcon(scaled));
         logoimage.setText("");
+        
+        //name placeholder
+        nameField.setForeground(java.awt.Color.GRAY);
+        nameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (nameField.getText().equals("First Name, Last Name")) {
+                    nameField.setText(""); nameField.setForeground(java.awt.Color.BLACK);
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (nameField.getText().isEmpty()) {
+                    nameField.setForeground(java.awt.Color.GRAY); nameField.setText("First Name, Last Name");
+                }
+            }
+        });
+        
+        //email
+        emailField.setForeground(java.awt.Color.GRAY);
+        emailField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (emailField.getText().equals("Email")) {
+                    emailField.setText(""); emailField.setForeground(java.awt.Color.BLACK);
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (emailField.getText().isEmpty()) {
+                    emailField.setForeground(java.awt.Color.GRAY); emailField.setText("Email");
+                }
+            }
+        });
+        
+        //user
+        usernameField.setForeground(java.awt.Color.GRAY);
+        usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (usernameField.getText().equals("Username")) {
+                    usernameField.setText(""); usernameField.setForeground(java.awt.Color.BLACK);
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (usernameField.getText().isEmpty()) {
+                    usernameField.setForeground(java.awt.Color.GRAY); usernameField.setText("Username");
+                }
+            }
+        });
+
+        //phone
+        phoneField.setForeground(java.awt.Color.GRAY);
+        phoneField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (phoneField.getText().equals("Phone")) {
+                    phoneField.setText(""); phoneField.setForeground(java.awt.Color.BLACK);
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (phoneField.getText().isEmpty()) {
+                    phoneField.setForeground(java.awt.Color.GRAY); phoneField.setText("Phone");
+                }
+            }
+        });
+
+        //pw
+        passwordField.setForeground(java.awt.Color.GRAY);
+        passwordField.setEchoChar((char) 0);
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (new String(passwordField.getPassword()).equals("Password")) {
+                    passwordField.setText(""); passwordField.setForeground(java.awt.Color.BLACK);
+                    passwordField.setEchoChar('•');
+                }
+            }
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (new String(passwordField.getPassword()).isEmpty()) {
+                    passwordField.setForeground(java.awt.Color.GRAY);
+                    passwordField.setEchoChar((char) 0); passwordField.setText("Password");
+                }
+            }
+        });
     }
     
     /**
