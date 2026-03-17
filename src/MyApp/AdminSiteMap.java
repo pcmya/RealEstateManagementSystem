@@ -29,74 +29,6 @@ public class AdminSiteMap extends javax.swing.JFrame {
         
         getContentPane().setLayout(new java.awt.BorderLayout(10, 10));
         
-        
-                //copied from gui ng dashboard
-        navbar = new javax.swing.JPanel();
-        dashboardButton = new javax.swing.JButton();
-        sitemapButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
-        logoimage = new javax.swing.JLabel();
-        navbar.setBackground(new java.awt.Color(153, 153, 153));
-
-        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
-        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
-        dashboardButton.setText("Dashboard");
-        dashboardButton.setBorder(null);
-        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
-
-        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
-        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
-        sitemapButton.setText("Site map");
-        sitemapButton.setBorder(null);
-        sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
-
-        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
-        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        logoutButton.setForeground(new java.awt.Color(0, 0, 0));
-        logoutButton.setText("Log out");
-        logoutButton.setBorder(null);
-        logoutButton.addActionListener(this::logoutButtonActionPerformed);
-
-        logoimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyApp/images/logoimgsmall.png"))); // NOI18N
-        logoimage.setText("jLabel2");
-
-        javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
-        navbar.setLayout(navbarLayout);
-        navbarLayout.setHorizontalGroup(
-            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
-            .addGroup(navbarLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
-        );
-        navbarLayout.setVerticalGroup(
-            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navbarLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(90, 90, 90)
-                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
-        );
-        //end of nav
-        
-        
-        javax.swing.JPanel sideBar = new javax.swing.JPanel();
-        sideBar.setPreferredSize(new java.awt.Dimension(180, 787));
-        
         javax.swing.JPanel topPanel = new javax.swing.JPanel(new java.awt.GridLayout(2, 1));
         titleLabel.setHorizontalAlignment(javax.swing.JLabel.CENTER);
         legend.setHorizontalAlignment(javax.swing.JLabel.CENTER);
@@ -171,7 +103,6 @@ public class AdminSiteMap extends javax.swing.JFrame {
         contentArea.add(scroll, java.awt.BorderLayout.CENTER);
         contentArea.add(bottomPanel, java.awt.BorderLayout.SOUTH);
 
-        getContentPane().add(sideBar, java.awt.BorderLayout.WEST);
         getContentPane().add(contentArea, java.awt.BorderLayout.CENTER);
 
         revalidate();
