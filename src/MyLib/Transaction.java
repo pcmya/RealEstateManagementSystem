@@ -11,14 +11,11 @@ package MyLib;
 public abstract class Transaction {
     private Client client;
     private Property property;
-    
     private double totalContractPrice;
     private double reservationFee;
-    
     private double netDP;
     private double requiredDP;
     private int months;
-    
     private double loanableAmount;
 
     public Transaction(Client client, Property property) {
