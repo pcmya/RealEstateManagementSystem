@@ -36,6 +36,7 @@ public class TransactionWindow extends javax.swing.JFrame {
 
     public TransactionWindow(Property chosenBlkLot, Client client, EstateProperties ep) {
         initComponents();
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         this.chosenBlkLot = chosenBlkLot;
         this.loggedIn = client;
         this.ep = ep;
@@ -89,6 +90,11 @@ public class TransactionWindow extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        navbar = new javax.swing.JPanel();
+        dashboardButton = new javax.swing.JButton();
+        sitemapButton = new javax.swing.JButton();
+        logoutButton = new javax.swing.JButton();
+        logoimage = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
@@ -186,7 +192,7 @@ public class TransactionWindow extends javax.swing.JFrame {
                                     .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(reservFeeInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
@@ -237,7 +243,7 @@ public class TransactionWindow extends javax.swing.JFrame {
                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(payTermInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 60, Short.MAX_VALUE)
                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel22))
@@ -354,17 +360,79 @@ public class TransactionWindow extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
+        navbar.setBackground(new java.awt.Color(153, 153, 153));
+
+        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
+        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        dashboardButton.setForeground(new java.awt.Color(0, 0, 0));
+        dashboardButton.setText("Dashboard");
+        dashboardButton.setBorder(null);
+        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
+
+        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
+        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        sitemapButton.setForeground(new java.awt.Color(0, 0, 0));
+        sitemapButton.setText("Site map");
+        sitemapButton.setBorder(null);
+        sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
+
+        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
+        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
+        logoutButton.setForeground(new java.awt.Color(0, 0, 0));
+        logoutButton.setText("Log out");
+        logoutButton.setBorder(null);
+        logoutButton.addActionListener(this::logoutButtonActionPerformed);
+
+        logoimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyApp/images/logoimgsmall.png"))); // NOI18N
+        logoimage.setText("jLabel2");
+
+        javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
+        navbar.setLayout(navbarLayout);
+        navbarLayout.setHorizontalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(39, 39, 39))
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(22, 22, 22)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(32, Short.MAX_VALUE))
+        );
+        navbarLayout.setVerticalGroup(
+            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(90, 90, 90)
+                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 221, Short.MAX_VALUE)
+                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(128, 128, 128))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 247, Short.MAX_VALUE)
+                .addGap(0, 261, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addComponent(navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 757, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1025, 787);
@@ -518,6 +586,21 @@ public class TransactionWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_comboPayMethodItemStateChanged
 
+    private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
+        new ClientDashboard(loggedIn).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_dashboardButtonActionPerformed
+
+    private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
+        new ClientSiteMap(loggedIn, ep).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_sitemapButtonActionPerformed
+
+    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
+        new Login().setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_logoutButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -547,6 +630,7 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBuyReserve;
     private javax.swing.JComboBox<String> comboPayMethod;
     private javax.swing.JButton confirmTransactBtn;
+    private javax.swing.JButton dashboardButton;
     private javax.swing.JLabel discountInfo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -571,11 +655,15 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel loanableAmtInfo;
+    private javax.swing.JLabel logoimage;
+    private javax.swing.JButton logoutButton;
+    private javax.swing.JPanel navbar;
     private javax.swing.JLabel netDPinfo;
     private javax.swing.JLabel payTermInfo;
     private javax.swing.JPanel receiptPanel;
     private javax.swing.JLabel reqDpInfo;
     private javax.swing.JLabel reservFeeInfo;
+    private javax.swing.JButton sitemapButton;
     private javax.swing.JLabel tcpInfo;
     // End of variables declaration//GEN-END:variables
 }
