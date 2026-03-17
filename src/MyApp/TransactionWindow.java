@@ -71,8 +71,6 @@ public class TransactionWindow extends javax.swing.JFrame {
         netDPinfo = new javax.swing.JLabel();
         jLabel27 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
         jLabel32 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -91,15 +89,11 @@ public class TransactionWindow extends javax.swing.JFrame {
         jTextField1 = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        navbar = new javax.swing.JPanel();
-        dashboardButton = new javax.swing.JButton();
-        sitemapButton = new javax.swing.JButton();
-        logoutButton = new javax.swing.JButton();
-        logoimage = new javax.swing.JLabel();
 
         jLabel4.setText("jLabel4");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setPreferredSize(new java.awt.Dimension(1083, 759));
         setResizable(false);
 
         comboPayMethod.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -124,10 +118,12 @@ public class TransactionWindow extends javax.swing.JFrame {
         jLabel21.setText("Net Downpayment:");
 
         jLabel22.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel22.setText("Bank Name:");
+        jLabel22.setText("Bank Acc. ID.:");
+        jLabel22.setVisible(false);
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jLabel23.setText("PagIBIG ID:");
+        jLabel23.setText("Pag-IBIG ID:");
+        jLabel23.setVisible(false);
 
         reservFeeInfo.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         reservFeeInfo.setText("N/A");
@@ -140,17 +136,11 @@ public class TransactionWindow extends javax.swing.JFrame {
 
         jLabel27.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel27.setText("N/A");
+        jLabel27.setVisible(false);
 
         jLabel28.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel28.setText("N/A");
-
-        jLabel29.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel29.setText("Est. Monthly Amortization:");
-
-        jLabel30.setFont(new java.awt.Font("Segoe UI", 0, 10)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(153, 153, 153));
-        jLabel30.setText("Est. Monthly Amortization:");
+        jLabel28.setVisible(false);
 
         jLabel32.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel32.setText("Discount: ");
@@ -181,50 +171,39 @@ public class TransactionWindow extends javax.swing.JFrame {
         receiptPanelLayout.setHorizontalGroup(
             receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(receiptPanelLayout.createSequentialGroup()
+                .addGap(18, 18, 18)
                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(receiptPanelLayout.createSequentialGroup()
-                        .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(receiptPanelLayout.createSequentialGroup()
-                                .addGap(75, 75, 75)
-                                .addComponent(jLabel30, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(receiptPanelLayout.createSequentialGroup()
-                                .addGap(74, 74, 74)
-                                .addComponent(jLabel29, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(receiptPanelLayout.createSequentialGroup()
+                        .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
+                        .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(receiptPanelLayout.createSequentialGroup()
                         .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(receiptPanelLayout.createSequentialGroup()
-                                .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel20)
+                                    .addComponent(jLabel19)
+                                    .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(reservFeeInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                                    .addComponent(tcpInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(discountInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
+                                    .addComponent(netDPinfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(loanableAmtInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(payTermInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                             .addGroup(receiptPanelLayout.createSequentialGroup()
-                                .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(receiptPanelLayout.createSequentialGroup()
-                                        .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel20)
-                                            .addComponent(jLabel19)
-                                            .addComponent(jLabel32, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 151, Short.MAX_VALUE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(reservFeeInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                                            .addComponent(tcpInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(discountInfo, javax.swing.GroupLayout.DEFAULT_SIZE, 189, Short.MAX_VALUE)
-                                            .addComponent(netDPinfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(loanableAmtInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 174, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addComponent(payTermInfo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                                    .addGroup(receiptPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel22)
-                                        .addGap(29, 29, 29)
-                                        .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(receiptPanelLayout.createSequentialGroup()
-                                        .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(reqDpInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(0, 0, Short.MAX_VALUE)))))
+                                .addComponent(jLabel22)
+                                .addGap(29, 29, 29)
+                                .addComponent(jLabel27, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(receiptPanelLayout.createSequentialGroup()
+                                .addComponent(jLabel33, javax.swing.GroupLayout.PREFERRED_SIZE, 157, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(reqDpInfo, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         receiptPanelLayout.setVerticalGroup(
@@ -258,19 +237,15 @@ public class TransactionWindow extends javax.swing.JFrame {
                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
                     .addComponent(payTermInfo))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
                     .addComponent(jLabel22))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel29)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(26, 26, 26)
                 .addGroup(receiptPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel28)
                     .addComponent(jLabel23))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel30)
-                .addGap(23, 23, 23))
+                .addGap(43, 43, 43))
         );
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -292,12 +267,14 @@ public class TransactionWindow extends javax.swing.JFrame {
 
         jLabel31.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel31.setText("Bank Name:");
+        jLabel31.setVisible(false);
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabel3.setText("Payment Details");
 
         jTextField1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jTextField1.addActionListener(this::jTextField1ActionPerformed);
+        jTextField1.setVisible(false);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -330,7 +307,7 @@ public class TransactionWindow extends javax.swing.JFrame {
                                     .addComponent(jTextField1, javax.swing.GroupLayout.DEFAULT_SIZE, 264, Short.MAX_VALUE)
                                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 113, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel31, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addGap(18, 18, 18)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -343,7 +320,7 @@ public class TransactionWindow extends javax.swing.JFrame {
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(503, 503, 503)))))
-                .addGap(37, 37, 37))
+                .addGap(46, 46, 46))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -377,76 +354,17 @@ public class TransactionWindow extends javax.swing.JFrame {
                 .addGap(45, 45, 45))
         );
 
-        navbar.setBackground(new java.awt.Color(153, 153, 153));
-
-        dashboardButton.setBackground(new java.awt.Color(153, 153, 153));
-        dashboardButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        dashboardButton.setText("Dashboard");
-        dashboardButton.setBorder(null);
-        dashboardButton.addActionListener(this::dashboardButtonActionPerformed);
-
-        sitemapButton.setBackground(new java.awt.Color(153, 153, 153));
-        sitemapButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        sitemapButton.setText("Site map");
-        sitemapButton.setBorder(null);
-        sitemapButton.addActionListener(this::sitemapButtonActionPerformed);
-
-        logoutButton.setBackground(new java.awt.Color(153, 153, 153));
-        logoutButton.setFont(new java.awt.Font("Mukta Malar", 0, 18)); // NOI18N
-        logoutButton.setText("Log out");
-        logoutButton.setBorder(null);
-        logoutButton.addActionListener(this::logoutButtonActionPerformed);
-
-        logoimage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/MyApp/images/logoimgsmall.png"))); // NOI18N
-        logoimage.setText("jLabel2");
-
-        javax.swing.GroupLayout navbarLayout = new javax.swing.GroupLayout(navbar);
-        navbar.setLayout(navbarLayout);
-        navbarLayout.setHorizontalGroup(
-            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(39, 39, 39))
-            .addGroup(navbarLayout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(28, Short.MAX_VALUE))
-        );
-        navbarLayout.setVerticalGroup(
-            navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navbarLayout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(logoimage, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(105, 105, 105)
-                .addComponent(dashboardButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(sitemapButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 206, Short.MAX_VALUE)
-                .addComponent(logoutButton, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(128, 128, 128))
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 270, Short.MAX_VALUE)
+                .addGap(0, 247, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(layout.createSequentialGroup()
-                    .addComponent(navbar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGap(0, 761, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         setBounds(0, 0, 1025, 787);
@@ -470,6 +388,17 @@ public class TransactionWindow extends javax.swing.JFrame {
     
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
+        if (jLabel31.getText().contains("Bank")) {
+            jLabel22.setVisible(true);
+            jLabel27.setVisible(true);
+            jLabel27.setText(jTextField1.getText());
+        }
+        if (jLabel31.getText().contains("Pag-IBIG")) {
+            jLabel23.setVisible(true);
+            jLabel28.setVisible(true);
+            jLabel28.setText(jTextField1.getText()); 
+        }
+        jTextField1.setText(""); 
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void confirmTransactBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmTransactBtnActionPerformed
@@ -503,17 +432,18 @@ public class TransactionWindow extends javax.swing.JFrame {
     private void comboBuyReserveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboBuyReserveActionPerformed
         // TODO add your handling code here:
         String buyReserveSelect = comboBuyReserve.getSelectedItem().toString();
+ 
+        tcpInfo.setText("N/A");
+        reservFeeInfo.setText("N/A");
+        jLabel2.setVisible(true);
+        comboPayMethod.setVisible(true);
         
-        if (buyReserveSelect.equals("Buy Lot")) {
-            tcpInfo.setText(String.format("₱ %.2f", chosenBlkLot.getPrice()));
-            reservFeeInfo.setText("₱ 15,000.00");
-            netDPinfo.setText("₱ 0.00");
-        }
         if (buyReserveSelect.equals("Reserve Lot")) {
             reserve.computePayment(chosenBlkLot.getModel().getModelName());
-            
             tcpInfo.setText(String.format("₱ %.2f", reserve.getTotalContractPrice()));
             reservFeeInfo.setText(String.format("₱ %.2f", reserve.getReservationFee()));
+            jLabel2.setVisible(false);
+            comboPayMethod.setVisible(false);
         }
     }//GEN-LAST:event_comboBuyReserveActionPerformed
 
@@ -532,76 +462,61 @@ public class TransactionWindow extends javax.swing.JFrame {
         loanableAmtInfo.setText("N/A");
         discountInfo.setText("N/A");
         payTermInfo.setText("N/A");
-
-        jTextField1.setVisible(false);
-        jLabel31.setVisible(false);
         
-        if (payMethodSelect.equals("Cash")) {
-            cash.computePayment(chosenBlkLot.getModel().getModelName());
-            
-            tcpInfo.setText(String.format("₱ %.2f", cash.getTotalContractPrice()));
-            reservFeeInfo.setText(String.format("₱ %.2f", cash.getReservationFee()));
-            discountInfo.setText(String.format("₱ %.2f", cash.getDiscountAmount()));
-            
-            jTextField1.setVisible(false);
-            jLabel31.setVisible(false);
-        }
-        else if (payMethodSelect.equals("Bank Financing")) {
-            jLabel31.setText("Bank ID: ");
-            jLabel31.setVisible(true);
-            jTextField1.setVisible(true);
-            
-            bf.computePayment(chosenBlkLot.getModel().getModelName());
-            
-            tcpInfo.setText(String.format("₱ %.2f", bf.getTotalContractPrice()));
-            reservFeeInfo.setText(String.format("₱ %.2f", bf.getReservationFee()));
-            reqDpInfo.setText(String.format("₱ %.2f", bf.getRequiredDP()));
-            netDPinfo.setText(String.format("₱ %.2f", bf.getNetDP()));
-            loanableAmtInfo.setText(String.format("₱ %.2f", bf.getLoanableAmount()));
-            payTermInfo.setText(String.format("₱ %.2f", bf.getdPTerm()) + " (" + bf.getMonths() + " mos.)");
-        }
-        else if (payMethodSelect.equals("Pag-IBIG")) { 
-            jLabel31.setText("Pag-IBIG ID:");
-            jLabel31.setVisible(true);
-            jTextField1.setVisible(true);
-            
-            pagibig.computePayment(chosenBlkLot.getModel().getModelName());
-            
-            tcpInfo.setText(String.format("₱ %.2f", pagibig.getTotalContractPrice()));
-            reservFeeInfo.setText(String.format("₱ %.2f", pagibig.getReservationFee()));
-            reqDpInfo.setText(String.format("₱ %.2f", pagibig.getRequiredDP()));
-            netDPinfo.setText(String.format("₱ %.2f", pagibig.getNetDP()));
-            loanableAmtInfo.setText(String.format("₱ %.2f", pagibig.getLoanableAmount()));
-            payTermInfo.setText(String.format("₱ %.2f", pagibig.getMonthlyEquity()) + " (" + pagibig.getMonths() + " mos.)");
-        }
-        else {
-            tcpInfo.setText("N/A");
-            reservFeeInfo.setText("N/A");
-            netDPinfo.setText("N/A");
-            reqDpInfo.setText("N/A");
-            loanableAmtInfo.setText("N/A");
-            discountInfo.setText("N/A");
-            payTermInfo.setText("N/A");
-
-            jTextField1.setVisible(false);
-            jLabel31.setVisible(false);
+        switch (payMethodSelect) {
+            case "Cash":
+                cash.computePayment(chosenBlkLot.getModel().getModelName());
+                tcpInfo.setText(String.format("₱ %.2f", cash.getTotalContractPrice()));
+                reservFeeInfo.setText(String.format("₱ %.2f", cash.getReservationFee()));
+                discountInfo.setText(String.format("₱ %.2f", cash.getDiscountAmount()));
+                jTextField1.setVisible(false);
+                jLabel31.setVisible(false);
+                jLabel22.setVisible(false);
+                jLabel23.setVisible(false);
+                jLabel27.setVisible(false);
+                jLabel28.setVisible(false);  
+                break;
+            case "Bank Financing":
+                jLabel31.setText("Bank Account ID: (press enter after typing details)");
+                jLabel31.setVisible(true);
+                jTextField1.setVisible(true);
+                jLabel23.setVisible(false);
+                jLabel28.setVisible(false);
+                bf.computePayment(chosenBlkLot.getModel().getModelName());
+                tcpInfo.setText(String.format("₱ %.2f", bf.getTotalContractPrice()));
+                reservFeeInfo.setText(String.format("₱ %.2f", bf.getReservationFee()));
+                reqDpInfo.setText(String.format("₱ %.2f", bf.getRequiredDP()));
+                netDPinfo.setText(String.format("₱ %.2f", bf.getNetDP()));
+                loanableAmtInfo.setText(String.format("₱ %.2f", bf.getLoanableAmount()));
+                payTermInfo.setText(String.format("₱ %.2f", bf.getdPTerm()) + " (" + bf.getMonths() + " mos.)");
+                break;
+            case "Pag-IBIG":
+                jLabel31.setText("Pag-IBIG ID: (press enter after typing details)");
+                jLabel31.setVisible(true);
+                jTextField1.setVisible(true);
+                jLabel22.setVisible(false);
+                jLabel27.setVisible(false);
+                pagibig.computePayment(chosenBlkLot.getModel().getModelName());
+                tcpInfo.setText(String.format("₱ %.2f", pagibig.getTotalContractPrice()));
+                reservFeeInfo.setText(String.format("₱ %.2f", pagibig.getReservationFee()));
+                reqDpInfo.setText(String.format("₱ %.2f", pagibig.getRequiredDP()));
+                netDPinfo.setText(String.format("₱ %.2f", pagibig.getNetDP()));
+                loanableAmtInfo.setText(String.format("₱ %.2f", pagibig.getLoanableAmount()));
+                payTermInfo.setText(String.format("₱ %.2f", pagibig.getMonthlyEquity()) + " (" + pagibig.getMonths() + " mos.)");
+                break;
+            default:
+                tcpInfo.setText("N/A");
+                reservFeeInfo.setText("N/A");
+                netDPinfo.setText("N/A");
+                reqDpInfo.setText("N/A");
+                loanableAmtInfo.setText("N/A");
+                discountInfo.setText("N/A");
+                payTermInfo.setText("N/A");
+                jTextField1.setVisible(false);
+                jLabel31.setVisible(false);
+                break;
         }
     }//GEN-LAST:event_comboPayMethodItemStateChanged
-
-    private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
-        new ClientDashboard(loggedIn).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_dashboardButtonActionPerformed
-
-    private void sitemapButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_sitemapButtonActionPerformed
-        new ClientSiteMap(loggedIn, ep).setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_sitemapButtonActionPerformed
-
-    private void logoutButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logoutButtonActionPerformed
-        new Login().setVisible(true);
-        this.dispose();
-    }//GEN-LAST:event_logoutButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -632,7 +547,6 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboBuyReserve;
     private javax.swing.JComboBox<String> comboPayMethod;
     private javax.swing.JButton confirmTransactBtn;
-    private javax.swing.JButton dashboardButton;
     private javax.swing.JLabel discountInfo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel17;
@@ -645,9 +559,7 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
@@ -659,15 +571,11 @@ public class TransactionWindow extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel loanableAmtInfo;
-    private javax.swing.JLabel logoimage;
-    private javax.swing.JButton logoutButton;
-    private javax.swing.JPanel navbar;
     private javax.swing.JLabel netDPinfo;
     private javax.swing.JLabel payTermInfo;
     private javax.swing.JPanel receiptPanel;
     private javax.swing.JLabel reqDpInfo;
     private javax.swing.JLabel reservFeeInfo;
-    private javax.swing.JButton sitemapButton;
     private javax.swing.JLabel tcpInfo;
     // End of variables declaration//GEN-END:variables
 }
