@@ -37,18 +37,9 @@ public class EstateProperties {
                     size = 60;
                     price = 5436700;
                 }
-                
-                if (modelName.equals("Anica")) {
-                    price = 2441800;
-                }
-                
-                if (modelName.equals("Alice")) {
-                    price = 2783000;
-                }
-                
-                if (modelName.equals("Thea")) {
-                    price = 3915400;
-                }
+                if (modelName.equals("Anica")) { price = 2441800; }
+                if (modelName.equals("Alice")) { price = 2783000; }
+                if (modelName.equals("Thea")) { price = 3915400; }
                 
                 int agentID = (count < 20) ? 101010 : 0;
                 count++;
@@ -91,27 +82,38 @@ public class EstateProperties {
         }
         return instance;
     }
-    
-    // ADMIN: Add new property
-    public boolean addProperty(Property newProperty) {
-        // Check if property already exists at same block/lot
+
+    public boolean addProperty(int blockLoc, int lotLoc, String modelName) {
         for (Property p : properties) {
-            if (p.getBlockLoc() == newProperty.getBlockLoc() && 
-                p.getLotLoc() == newProperty.getLotLoc()) {
-                return false; // Property already exists
+            if (p.getBlockLoc() == blockLoc && 
+                p.getLotLoc() == lotLoc) {
+                return false;
             }
         }
+        double size = 50;
+        double price = 0;  
+        
+        if (modelName.equals("Adelle")) {
+            size = 60;
+            price = 5436700;
+        }
+        if (modelName.equals("Anica")) { price = 2441800; }
+        if (modelName.equals("Alice")) { price = 2783000; }
+        if (modelName.equals("Thea")) { price = 3915400; }
+        
+        int agentID = 101010; 
+        
+        Property newProperty = new Property(blockLoc, lotLoc, Math.round(price), size, new PropertyModel(modelName), agentID); 
         return properties.add(newProperty);
     }
     
-    // ADMIN: Remove property by block and lot
     public boolean removeProperty(int blockLoc, int lotLoc) {
         for (Property p : properties) {
             if (p.getBlockLoc() == blockLoc && p.getLotLoc() == lotLoc) {
                 return properties.remove(p);
             }
         }
-        return false; // Property not found
+        return false;
     }
     
 }

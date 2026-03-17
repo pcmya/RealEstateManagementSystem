@@ -68,12 +68,10 @@
                       <Group type="103" groupAlignment="1" max="-2" attributes="0">
                           <Group type="102" attributes="0">
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="addPropertyBtn" max="32767" attributes="0"/>
-                                  <Component id="removePropertyBtn" pref="143" max="32767" attributes="0"/>
+                                  <Component id="btnGenReport" max="32767" attributes="0"/>
+                                  <Component id="managePropertyBtn" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnGenReport" min="-2" pref="143" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Component id="reportPanel" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jScrollPane1" min="-2" pref="628" max="-2" attributes="0"/>
@@ -121,13 +119,10 @@
               <Component id="jScrollPane1" min="-2" pref="325" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="addPropertyBtn" min="-2" pref="54" max="-2" attributes="0"/>
-                          <Component id="btnGenReport" alignment="0" min="-2" pref="39" max="-2" attributes="0"/>
-                      </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="btnGenReport" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="removePropertyBtn" min="-2" pref="54" max="-2" attributes="0"/>
+                      <Component id="managePropertyBtn" min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
                   <Component id="reportPanel" min="-2" max="-2" attributes="0"/>
               </Group>
@@ -350,14 +345,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JButton" name="btnGenReport">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Generate Report"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenReportActionPerformed"/>
-      </Events>
-    </Component>
     <Container class="javax.swing.JPanel" name="reportPanel">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -414,17 +401,23 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="java.awt.Button" name="addPropertyBtn">
+    <Component class="java.awt.Button" name="btnGenReport">
       <Properties>
-        <Property name="label" type="java.lang.String" value="Add Property"/>
+        <Property name="label" type="java.lang.String" value="Generate Report/Summary"/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnGenReportActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="java.awt.Button" name="removePropertyBtn">
+    <Component class="java.awt.Button" name="managePropertyBtn">
       <Properties>
-        <Property name="label" type="java.lang.String" value="Remove Property"/>
+        <Property name="label" type="java.lang.String" value="Manage Properties"/>
         <Property name="name" type="java.lang.String" value="" noResource="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managePropertyBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

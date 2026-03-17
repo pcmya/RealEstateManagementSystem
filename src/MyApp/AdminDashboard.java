@@ -19,14 +19,13 @@ import javax.swing.table.DefaultTableModel;
 public class AdminDashboard extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AdminDashboard.class.getName());
-    
-    private Admin loggedIn;
-    
+
     /**
      * Creates new form Properties
      */
     
-    EstateProperties ep;
+    private Admin loggedIn;
+    private EstateProperties ep;
 
     public AdminDashboard(Admin admin) {  
         initComponents();
@@ -64,13 +63,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         sitemapButton = new javax.swing.JButton();
         logoutButton = new javax.swing.JButton();
         logoimage = new javax.swing.JLabel();
-        btnGenReport = new javax.swing.JButton();
         reportPanel = new javax.swing.JPanel();
         availLotsInfo = new javax.swing.JLabel();
         reserveLotsInfo = new javax.swing.JLabel();
         soldLotsInfo = new javax.swing.JLabel();
-        addPropertyBtn = new java.awt.Button();
-        removePropertyBtn = new java.awt.Button();
+        btnGenReport = new java.awt.Button();
+        managePropertyBtn = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setResizable(false);
@@ -166,9 +164,6 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGap(128, 128, 128))
         );
 
-        btnGenReport.setText("Generate Report");
-        btnGenReport.addActionListener(this::btnGenReportActionPerformed);
-
         reportPanel.setBackground(new java.awt.Color(255, 255, 255));
         reportPanel.setVisible(false);
 
@@ -202,11 +197,13 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addContainerGap(22, Short.MAX_VALUE))
         );
 
-        addPropertyBtn.setLabel("Add Property");
-        addPropertyBtn.setName(""); // NOI18N
+        btnGenReport.setLabel("Generate Report/Summary");
+        btnGenReport.setName(""); // NOI18N
+        btnGenReport.addActionListener(this::btnGenReportActionPerformed);
 
-        removePropertyBtn.setLabel("Remove Property");
-        removePropertyBtn.setName(""); // NOI18N
+        managePropertyBtn.setLabel("Manage Properties");
+        managePropertyBtn.setName(""); // NOI18N
+        managePropertyBtn.addActionListener(this::managePropertyBtnActionPerformed);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -247,11 +244,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(addPropertyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(removePropertyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, 143, Short.MAX_VALUE))
+                                    .addComponent(btnGenReport, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(managePropertyBtn, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGenReport, javax.swing.GroupLayout.PREFERRED_SIZE, 143, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(33, 33, 33)
                                 .addComponent(reportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 628, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap())))
@@ -288,11 +283,9 @@ public class AdminDashboard extends javax.swing.JFrame {
                 .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(addPropertyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnGenReport, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(btnGenReport, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(removePropertyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(managePropertyBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(reportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(141, Short.MAX_VALUE))
             .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -412,6 +405,12 @@ public class AdminDashboard extends javax.swing.JFrame {
         soldLotsInfo.setText("Number of Sold Lots: " + soldLotCount);
     }//GEN-LAST:event_btnGenReportActionPerformed
 
+    private void managePropertyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_managePropertyBtnActionPerformed
+        // TODO add your handling code here:
+        new AdminProperties(loggedIn).setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_managePropertyBtnActionPerformed
+
 
     private void loadProperties() {
         DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
@@ -473,9 +472,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private java.awt.Button addPropertyBtn;
     private javax.swing.JLabel availLotsInfo;
-    private javax.swing.JButton btnGenReport;
+    private java.awt.Button btnGenReport;
     private java.awt.Button btnReset;
     private java.awt.Button btnSearch;
     private javax.swing.JComboBox<String> cmbModel;
@@ -493,8 +491,8 @@ public class AdminDashboard extends javax.swing.JFrame {
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel logoimage;
     private javax.swing.JButton logoutButton;
+    private java.awt.Button managePropertyBtn;
     private javax.swing.JPanel navbar;
-    private java.awt.Button removePropertyBtn;
     private javax.swing.JPanel reportPanel;
     private javax.swing.JLabel reserveLotsInfo;
     private javax.swing.JButton sitemapButton;

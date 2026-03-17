@@ -23,6 +23,7 @@ public class PropertyModel {
     
     public String displayModelDetails() {
         if (modelName.equals("Thea")) {
+            
             bedNum = 3;
             bathNum = 2;
         }
