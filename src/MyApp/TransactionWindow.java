@@ -492,7 +492,7 @@ public class TransactionWindow extends javax.swing.JFrame {
         
         ClientDashboard pw = new ClientDashboard(loggedIn);
         pw.setVisible(true);
-        new MyTransaction().setVisible(true);
+        new TransactReceipt().setVisible(true);
         dispose();
         
     }//GEN-LAST:event_confirmTransactBtnActionPerformed
