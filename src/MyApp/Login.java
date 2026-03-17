@@ -38,6 +38,53 @@ public class Login extends javax.swing.JFrame {
         Image scaled = raw.getImage().getScaledInstance(350, 200, Image.SCALE_SMOOTH);
         logoimage.setIcon(new ImageIcon(scaled));
         logoimage.setText("");
+        
+        usernameField.setForeground(java.awt.Color.GRAY);
+        usernameField.setText("Enter username");
+
+        usernameField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                String text = usernameField.getText();
+                if (text.equals("Enter username") || text.equals("Enter Agent ID") || text.equals("Enter Admin ID")) {
+                    usernameField.setText("");
+                    usernameField.setForeground(java.awt.Color.BLACK);
+                }
+            }//focusgained
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (usernameField.getText().isEmpty()) {
+                    usernameField.setForeground(java.awt.Color.GRAY);
+                    String role = (String) userType.getSelectedItem();
+                    if (role.equals("Agent")) {
+                        usernameField.setText("Enter Agent ID");
+                    } else if (role.equals("Admin")) {
+                        usernameField.setText("Enter Admin ID");
+                    } else {
+                        usernameField.setText("Enter username");
+                    }
+                }
+            }//focuslost
+        });
+        
+        passwordField.setForeground(java.awt.Color.GRAY);
+        passwordField.setEchoChar((char) 0);
+        passwordField.setText("Enter password");
+
+        passwordField.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent e) {
+                if (new String(passwordField.getPassword()).equals("Enter password")) {
+                    passwordField.setText("");
+                    passwordField.setForeground(java.awt.Color.BLACK);
+                    passwordField.setEchoChar('•');
+                }
+            }//gained
+            public void focusLost(java.awt.event.FocusEvent e) {
+                if (new String(passwordField.getPassword()).isEmpty()) {
+                    passwordField.setForeground(java.awt.Color.GRAY);
+                    passwordField.setEchoChar((char) 0);
+                    passwordField.setText("Enter password");
+                }
+            }//lost
+        });
     }
     
     static {
@@ -207,15 +254,18 @@ public class Login extends javax.swing.JFrame {
 
     private void userTypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_userTypeActionPerformed
         String selected = (String) userType.getSelectedItem();
-    
+
         if (selected.equals("Client")) {
-            usernameField.setText("Username");
+            usernameField.setForeground(java.awt.Color.GRAY);
+            usernameField.setText("Enter username");
             toRegister.setVisible(true);
         } else if (selected.equals("Agent")) {
-            usernameField.setText("Agent ID");
+            usernameField.setForeground(java.awt.Color.GRAY);
+            usernameField.setText("Enter Agent ID");
             toRegister.setVisible(false);
         } else if (selected.equals("Admin")) {
-            usernameField.setText("Admin ID");
+            usernameField.setForeground(java.awt.Color.GRAY);
+            usernameField.setText("Enter Admin ID");
             toRegister.setVisible(false);
         }
     }//GEN-LAST:event_userTypeActionPerformed
