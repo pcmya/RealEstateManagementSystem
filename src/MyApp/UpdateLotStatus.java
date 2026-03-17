@@ -25,6 +25,8 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         this.ep = ep;
         initComponents();
         jTextField1.setText("");
+        filterBlocksForAgent();
+        updateCurrentStatusLabel();
     }
     
     public UpdateLotStatus() {
@@ -253,6 +255,7 @@ public class UpdateLotStatus extends javax.swing.JFrame {
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         // TODO add your handling code here:
         updateCurrentStatusLabel();
+        
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private void dashboardButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dashboardButtonActionPerformed
@@ -270,7 +273,23 @@ public class UpdateLotStatus extends javax.swing.JFrame {
         this.dispose();
     }//GEN-LAST:event_logoutButtonActionPerformed
     
+    private void filterBlocksForAgent() {
+        if (loggedIn == null) return;
+
+        java.util.Set<String> agentBlocks = new java.util.LinkedHashSet<>();
+        for (MyLib.Property p : ep.getProperties()) {
+            if (p.getAgentID() == loggedIn.getAgentID()) {
+                agentBlocks.add("Block " + p.getBlockLoc());
+            }
+        }
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(
+            agentBlocks.toArray(new String[0])
+        ));
+    }
+    
     private void updateCurrentStatusLabel() {
+        
         if (this.ep == null) {
             return;
         }

@@ -62,6 +62,10 @@ public class Property {
 
     public int getAgentID() {
         return agentID;
-}
+    }
+    
+    public void setAgentID(int agentID) {
+        this.agentID = agentID;
+    }
     
 }

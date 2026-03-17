@@ -70,6 +70,7 @@
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="btnGenReport" max="32767" attributes="0"/>
                                   <Component id="managePropertyBtn" max="32767" attributes="0"/>
+                                  <Component id="manageAgentsBtn" alignment="0" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace max="32767" attributes="0"/>
                               <Component id="reportPanel" min="-2" max="-2" attributes="0"/>
@@ -123,10 +124,12 @@
                       <Component id="btnGenReport" min="-2" pref="54" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="managePropertyBtn" min="-2" pref="54" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="manageAgentsBtn" min="-2" pref="54" max="-2" attributes="0"/>
                   </Group>
                   <Component id="reportPanel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="141" max="32767" attributes="0"/>
+              <EmptySpace pref="98" max="32767" attributes="0"/>
           </Group>
           <Component id="navbar" alignment="0" max="32767" attributes="0"/>
       </Group>
@@ -417,6 +420,16 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="managePropertyBtnActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="java.awt.Button" name="manageAgentsBtn">
+      <Properties>
+        <Property name="actionCommand" type="java.lang.String" value=""/>
+        <Property name="label" type="java.lang.String" value="Manage Agents"/>
+        <Property name="name" type="java.lang.String" value="" noResource="true"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="manageAgentsBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>
