@@ -9,8 +9,6 @@ package MyLib;
  * @author pcmya
  */
 public class Reserve extends Transaction{ 
-    private double totalContractPrice = 0.0;
-    private double reservationFee = 0.0;
     private double balance = 0.0;
     
     public Reserve(Client client, Property property) {
@@ -19,30 +17,22 @@ public class Reserve extends Transaction{
 
     public void computePayment(String modelName){
         if (modelName.equals("Adelle")) {
-            totalContractPrice = 5436700.00;
-            reservationFee = 20000.00;
+            super.setTotalContractPrice(5436700.00);
+            super.setReservationFee(20000.00);
         }
         if (modelName.equals("Alice")) {
-            totalContractPrice = 2783000.00;
-            reservationFee = 15000.00;
+            super.setTotalContractPrice(2783000.00);
+            super.setReservationFee(15000.00);
         }
         if (modelName.equals("Thea")) {
-            totalContractPrice = 3915400.00;
-            reservationFee = 15000.00;   
+            super.setTotalContractPrice(3915400.00);
+            super.setReservationFee(1500.00);  
         }
         if (modelName.equals("Anica")) {
-            totalContractPrice = 2441800.00;
-            reservationFee = 10000;
+            super.setTotalContractPrice(2441800.00);
+            super.setReservationFee(10000.00);
         }
-        balance = totalContractPrice - reservationFee;
-    }
-
-    public double getTotalContractPrice() {
-        return totalContractPrice;
-    }
-
-    public double getReservationFee() {
-        return reservationFee;
+        balance = super.getTotalContractPrice() - super.getReservationFee();
     }
 
     public double getBalance() {
