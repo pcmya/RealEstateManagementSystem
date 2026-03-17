@@ -19,13 +19,12 @@ public class AgentDashboard extends javax.swing.JFrame {
     
     private static final java.util.logging.Logger logger = java.util.logging.Logger.getLogger(AgentDashboard.class.getName());
     
-    private Agent loggedIn;
-    
     /**
      * Creates new form Properties
      */
     
-    EstateProperties ep;
+    private Agent loggedIn;
+    private EstateProperties ep;
 
     public AgentDashboard(Agent agent) {  
         initComponents();

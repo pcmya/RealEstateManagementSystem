@@ -25,7 +25,7 @@ public class ClientDashboard extends javax.swing.JFrame {
      * Creates new form Properties
      */
     
-    EstateProperties ep;
+    private EstateProperties ep;
 
     public ClientDashboard(Client client) {  
         initComponents();
