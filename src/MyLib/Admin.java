@@ -13,7 +13,6 @@ import java.util.ArrayList;
 public class Admin extends SystemUser {
     private int adminID;
     private EstateProperties properties;
-    private ArrayList<Agent> agents = new ArrayList<>();
     
     public Admin(int adminID, String name, String password) {
         super(name, password);
@@ -29,43 +28,21 @@ public class Admin extends SystemUser {
         return adminID;
     }
    
-    public void addAgent(int agentID, String name, String password) {
-        agents.add(new Agent(agentID, name, password));
-    }
-
-    public boolean removeAgent(int agentID) {
-        for (Agent agent : agents) {
-            if (agent.getAgentID() == agentID) {
-                return agents.remove(agent);
-            }
-        }
-        return false;
+    // ADMIN: Add new property
+    public boolean addProperty(int blockLoc, int lotLoc, int price, double size, 
+                              String modelName, int agentID) {
+        PropertyModel model = new PropertyModel(modelName);
+        Property newProperty = new Property(blockLoc, lotLoc, price, size, model, agentID);
+        return properties.addProperty(newProperty);
     }
     
-    public boolean agentExists(int agentID) {
-        for (Agent agent : agents) {
-            if (agent.getAgentID() == agentID)
-                return true;
-        }
-        return false;
+    // ADMIN: Remove property by block and lot
+    public boolean removeProperty(int blockLoc, int lotLoc) {
+        return properties.removeProperty(blockLoc, lotLoc);
     }
     
-    public ArrayList<Agent> getAgents() {
-        return agents;
-    }
-
-    public int getAgentCount() {
-        return agents.size();
-    }
-
-    public boolean updateAgent(int agentID, String newName, String newPassword) {
-        for (Agent agent : agents) {
-            if (agent.getAgentID() == agentID) {
-                agent.setName(newName);
-                agent.setPassword(newPassword);
-                return true;
-            }
-        }
-        return false;
+    // ADMIN: Get all properties (for display)
+    public ArrayList<Property> getAllProperties() {
+        return properties.getProperties();
     }
 }

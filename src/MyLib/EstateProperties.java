@@ -92,4 +92,26 @@ public class EstateProperties {
         return instance;
     }
     
+    // ADMIN: Add new property
+    public boolean addProperty(Property newProperty) {
+        // Check if property already exists at same block/lot
+        for (Property p : properties) {
+            if (p.getBlockLoc() == newProperty.getBlockLoc() && 
+                p.getLotLoc() == newProperty.getLotLoc()) {
+                return false; // Property already exists
+            }
+        }
+        return properties.add(newProperty);
+    }
+    
+    // ADMIN: Remove property by block and lot
+    public boolean removeProperty(int blockLoc, int lotLoc) {
+        for (Property p : properties) {
+            if (p.getBlockLoc() == blockLoc && p.getLotLoc() == lotLoc) {
+                return properties.remove(p);
+            }
+        }
+        return false; // Property not found
+    }
+    
 }
