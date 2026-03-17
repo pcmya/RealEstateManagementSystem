@@ -38,10 +38,16 @@ public class AdminSiteMap extends javax.swing.JFrame {
         topPanel.add(legend);
         topPanel.setPreferredSize(new java.awt.Dimension(800, 100));
         
-        javax.swing.JPanel grid = new javax.swing.JPanel(new java.awt.GridLayout(5, 20, 2, 2));
-        
-        for (int block = 1; block <= 5; block++) {
-            for (int lot = 1; lot <= 20; lot++) {
+        int maxBlock = 1, maxLot = 1;
+        for (Property p : ep.getProperties()) {
+            if (p.getBlockLoc() > maxBlock) maxBlock = p.getBlockLoc();
+            if (p.getLotLoc() > maxLot) maxLot = p.getLotLoc();
+        }
+
+        javax.swing.JPanel grid = new javax.swing.JPanel(new java.awt.GridLayout(maxBlock, maxLot, 2, 2));
+
+        for (int block = 1; block <= maxBlock; block++) {
+            for (int lot = 1; lot <= maxLot; lot++) {
 
                 Property found = null;
                 for (Property p : ep.getProperties()) {
