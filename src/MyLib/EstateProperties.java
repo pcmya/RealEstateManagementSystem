@@ -101,7 +101,7 @@ public class EstateProperties {
         if (modelName.equals("Alice")) { price = 2783000; }
         if (modelName.equals("Thea")) { price = 3915400; }
         
-        int agentID = 101010; 
+        int agentID = 0; 
         
         Property newProperty = new Property(blockLoc, lotLoc, Math.round(price), size, new PropertyModel(modelName), agentID); 
         return properties.add(newProperty);
