@@ -250,22 +250,35 @@ public class AdminProperties extends javax.swing.JFrame {
     }//GEN-LAST:event_logoutButtonActionPerformed
 
     private void addPropertyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addPropertyBtnActionPerformed
-        // TODO add your handling code here:
-        int blockNumAdd = Integer.parseInt(blockInputAdd.getText());
-        int lotNumAdd = Integer.parseInt(lotInputAdd.getText());
         String modelName = modelCombo.getSelectedItem().toString();
-        
-        if (loggedIn.addProperty(blockNumAdd, lotNumAdd, modelName)) {
-            JOptionPane.showMessageDialog(this, "Property Added Successfully!");
-            blockInputAdd.setText("");
-            lotInputAdd.setText("");
-            modelCombo.setSelectedIndex(0);
+
+        if (modelName.equals("-")) {
+            JOptionPane.showMessageDialog(this, "Please select a house model!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        else {
-            JOptionPane.showMessageDialog(this, "Cannot add property! Check if block/lot exists or model name is valid");
+
+        if (blockInputAdd.getText().trim().isEmpty() || lotInputAdd.getText().trim().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Please fill in Block and Lot numbers!", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
         }
-        
-        loadProperties();
+
+        try {
+            int blockNumAdd = Integer.parseInt(blockInputAdd.getText().trim());
+            int lotNumAdd = Integer.parseInt(lotInputAdd.getText().trim());
+
+            if (loggedIn.addProperty(blockNumAdd, lotNumAdd, modelName)) {
+                JOptionPane.showMessageDialog(this, "Property Added Successfully!");
+                blockInputAdd.setText("");
+                lotInputAdd.setText("");
+                modelCombo.setSelectedIndex(0);
+            } else {
+                JOptionPane.showMessageDialog(this, "Cannot add property! Block/Lot combination already exists.");
+            }
+            loadProperties();
+
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(this, "Block and Lot must be numbers!", "Error", JOptionPane.ERROR_MESSAGE);
+        }  
     }//GEN-LAST:event_addPropertyBtnActionPerformed
 
     private void removePropertyBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removePropertyBtnActionPerformed
