@@ -26,11 +26,6 @@ public class Property {
         this.model = model;
         this.agentID = agentID;
     }
-    
-    public Property(int blockLoc, int lotLoc) {
-        this.blockLoc = blockLoc;
-        this.lotLoc = lotLoc;
-    }
 
     public int getBlockLoc() {
         return blockLoc;
