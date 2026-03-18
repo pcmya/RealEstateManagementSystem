@@ -9,7 +9,7 @@ package MyLib;
  * @author Christian Aranza
  */
 public abstract class SystemUser {
-    String name;
+    private String name;
     private String password;
     
     public SystemUser(String name, String password) {
