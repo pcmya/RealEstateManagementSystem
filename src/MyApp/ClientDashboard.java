@@ -364,7 +364,6 @@ public class ClientDashboard extends javax.swing.JFrame {
             return; 
         }
         
-        // Find the actual Property from ALL properties
         Property chosenProperty = null;
         for (Property p : ep.getProperties()) {
             if (p.getBlockLoc() == blockNum && p.getLotLoc() == lotNum) {
@@ -373,13 +372,11 @@ public class ClientDashboard extends javax.swing.JFrame {
             }
         }
         
-        // Check if property exists
         if (chosenProperty == null) {
             JOptionPane.showMessageDialog(this, "Property not found with Block " + blockNum + " and Lot " + lotNum, "Error", JOptionPane.ERROR_MESSAGE);
             return;
         }
         
-        // Check if property is available
         if (!chosenProperty.getStatus().equals("Available")) {
             JOptionPane.showMessageDialog(this, "This property is not available for transaction", "Error", JOptionPane.ERROR_MESSAGE);
             return;
@@ -486,9 +483,6 @@ public class ClientDashboard extends javax.swing.JFrame {
             logger.log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-
-        /* Create and display the form 
-        java.awt.EventQueue.invokeLater(() -> new ClientDashboard().setVisible(true));*/
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
