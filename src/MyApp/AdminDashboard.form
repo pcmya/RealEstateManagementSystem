@@ -129,7 +129,7 @@
                   </Group>
                   <Component id="reportPanel" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <EmptySpace pref="36" max="32767" attributes="0"/>
           </Group>
           <Component id="navbar" alignment="0" max="32767" attributes="0"/>
       </Group>

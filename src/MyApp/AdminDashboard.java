@@ -205,7 +205,6 @@ public class AdminDashboard extends javax.swing.JFrame {
         managePropertyBtn.setName(""); // NOI18N
         managePropertyBtn.addActionListener(this::managePropertyBtnActionPerformed);
 
-        manageAgentsBtn.setActionCommand("");
         manageAgentsBtn.setLabel("Manage Agents");
         manageAgentsBtn.setName(""); // NOI18N
         manageAgentsBtn.addActionListener(this::manageAgentsBtnActionPerformed);
@@ -295,7 +294,7 @@ public class AdminDashboard extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(manageAgentsBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(reportPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
+                .addContainerGap(36, Short.MAX_VALUE))
             .addComponent(navbar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
